@@ -74,7 +74,7 @@ export default {
         },
       },
       backgroundImage: {
-        "radial-dark": `radial-gradient(ellipse 80% 80% at 50% -20%, theme('colors.blue.300'), theme('colors.blue.200'))`,
+        "radial-dark": `radial-gradient(ellipse 80% 80% at 50% 10%, theme('colors.blue.400'), theme('colors.blue.100'))`,
       },
     },
   },
