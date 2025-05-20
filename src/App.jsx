@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router";
 import Home from "./pages/Home";
 import Background from "./components/Background";
 import Header from "./components/Header";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <main className="container flex-1 flex flex-col">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/profile" element={<Profile />} />
           </Routes>
         </main>
       </Router>

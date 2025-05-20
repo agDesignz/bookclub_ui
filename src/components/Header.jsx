@@ -12,7 +12,7 @@ const Header = () => {
           >
             Bookclub App
           </Link>
-          <Link to="/">Sign-In</Link>
+          <Link to="/profile">Sign-In</Link>
         </nav>
       </div>
     </header>
