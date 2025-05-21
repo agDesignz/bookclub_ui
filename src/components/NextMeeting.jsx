@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import MeetingContext from "../context/MeetingContext";
+import MeetingContext from "../context/meeting/MeetingContext";
 
 const NextMeeting = () => {
   const { meeting, meetingLoading } = useContext(MeetingContext);

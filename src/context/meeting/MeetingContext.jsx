@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from "react";
-import getMeeting from "../api/meeting/getMeeting";
+import getMeeting from "../../api/meeting/getMeeting";
 
 const MeetingContext = createContext();
 
@@ -11,12 +11,10 @@ export const MeetingProvider = ({ children }) => {
     const fetchMeetingData = async () => {
       setMeetingLoading(true);
       const meetingData = await getMeeting();
-      console.log("meetingData", meetingData);
       if (meetingData) {
         setMeeting(meetingData);
         setMeetingLoading(false);
       }
-      console.log(meeting);
     };
     fetchMeetingData();
   }, []);

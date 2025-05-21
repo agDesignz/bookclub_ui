@@ -8,13 +8,12 @@ const getMeeting = async () => {
     .order("date", { ascending: false })
     .limit(1);
   if (!error) {
-    console.log("getMeeting data: ", data);
     const { date, time: rawTime, location, book_id } = data[0];
     const time = formatTime(rawTime);
-    console.log("time:", time);
     return { date, time, location, book_id };
   } else {
     console.log("getMeeting fetch error: ", error);
+    return;
   }
 };
 
