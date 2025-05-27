@@ -1,8 +1,13 @@
 import { useState } from "react";
+import { useAuth } from "../../context/auth/AuthContext";
+import { useNavigate } from "react-router";
 
 const Login = () => {
   const [loginData, setLoginData] = useState({});
   const [alertMsg, setAlertMsg] = useState("");
+
+  const { logInUser } = useAuth();
+  const navigate = useNavigate();
 
   const handleLoginChange = (e) => {
     setLoginData({ ...loginData, [e.target.name]: e.target.value });
@@ -11,6 +16,9 @@ const Login = () => {
   const submitLogin = async (e) => {
     e.preventDefault();
     console.log(loginData);
+    const loggedIn = await logInUser(loginData.email, loginData.password);
+    console.log(loggedIn);
+    navigate("/");
     // const result = await handleUserApi("POST", "/api/user/login", loginData);
     // setLoginData({});
     // !result.ok && setAlertMsg("Invalid username or password.");
@@ -18,14 +26,14 @@ const Login = () => {
 
   return (
     <form className="flex flex-col gap-4 items-center" onSubmit={submitLogin}>
-      <label hidden htmlFor="username">
-        Username
+      <label hidden htmlFor="email">
+        email
       </label>
       <input
-        type="text"
-        name="username"
-        value={loginData?.username || ""}
-        placeholder="Username"
+        type="email"
+        name="email"
+        value={loginData?.email || ""}
+        placeholder="Email"
         className="auth-form__input"
         onChange={handleLoginChange}
       />

@@ -1,4 +1,4 @@
-import { supabase } from "../../supabaseClient";
+import supabase from "../../supabaseClient";
 import formatTime from "../../utils/formatTime";
 
 const getMeeting = async () => {

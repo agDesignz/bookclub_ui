@@ -1,42 +1,27 @@
 import { useState } from "react";
+import { useAuth } from "../../context/auth/AuthContext";
 
 const Register = () => {
   const [signupData, setSignupData] = useState({});
   const [alertMsg, setAlertMsg] = useState("");
-  // const { handleUserApi } = useAuth();
-  const [altchaPayload, setAltchaPayload] = useState(null);
-  const [isVerified, setIsVerified] = useState(false);
   const handleSignupChange = (e) => {
     // updateFormMessage();
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
   };
-
-  //   const handleAltchaVerify = (payload) => {
-  //     setAltchaPayload(payload);
-  //     setIsVerified(true);
-  //   };
+  const { registerUser } = useAuth();
 
   const submitSignup = async (e) => {
     e.preventDefault();
 
-    // if (!altchaPayload) {
-    //   alert("Please solve the Altcha challenge first!");
-    //   return;
-    // }
-
-    const { password, confirmPassword } = signupData;
+    const { password, confirmPassword, email, username } = signupData;
     if (password !== confirmPassword) {
       console.log("Passwords don't match");
       return;
     } else {
       console.log(signupData);
-      //   const result = await handleUserApi("POST", "/api/user", {
-      //     ...signupData,
-      // altchaPayload,
-      //   });
-      //   setSignupData({});
-      //   !result.ok &&
-      //     setAlertMsg("There was an error signing you up. Please try again.");
+
+      const result = await registerUser(email, password, username);
+      console.log(result);
     }
   };
 
