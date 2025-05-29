@@ -1,8 +1,6 @@
-/* @layer components { */
 .auth-form {
   background-color: none;
   &__input {
     @apply border rounded-full py-3 px-3 border-none w-full bg-lemon-500 placeholder-blue-200/50 focus-visible:bg-lemon-700 text-blue-200 outline-none;
   }
 }
-/* } */

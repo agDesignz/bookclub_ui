@@ -1,0 +1,27 @@
+.db-card {
+  @apply grid md:items-start gap-4 w-full p-4 md:p-8 border border-lemon-700/50 rounded-lg md:rounded-2xl;
+
+  &__main-heading {
+    @apply col-span-full text-center font-mont;
+  }
+
+  &__book-img {
+    @apply rounded-lg md:rounded-xl;
+  }
+
+  &__content-text {
+    @apply flex flex-col gap-4;
+  }
+
+  &__book-title {
+    @apply font-aleg text-2xl md:text-5xl 2xl:text-6xl;
+  }
+
+  &__book-author {
+    @apply font-aleg italic text-lg md:text-2xl ml-4;
+  }
+
+  &--book {
+    @apply grid-cols-[max-content_1fr];
+  }
+}

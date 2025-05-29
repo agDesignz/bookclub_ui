@@ -4,12 +4,18 @@ import MeetingContext from "../context/meeting/MeetingContext";
 const NextBook = () => {
   const { meeting, meetingLoading } = useContext(MeetingContext);
   return (
-    <section className="grid md:items-start gap-4 w-full grid-cols-[max-content_1fr]">
-      <div className="col-span-2 flex flex-col md:grow">
-        <h2 className="text-2xl sm:text-3xl">
+    <section className="db-card db-card--book">
+      <h2 className="db-card__main-heading">Current Book</h2>
+      <img
+        className="db-card__book-img"
+        src={`https://covers.openlibrary.org/b/id/${meeting?.book_id?.cover}-M.jpg`}
+        alt={`cover of ${meeting?.book_id?.title}`}
+      />
+      <div className="db-card__content-text">
+        <h3 className="db-card__book-title">
           {meeting?.book_id?.title || "TBA"}
-        </h2>
-        <h4 className="text-md sm:text-lg">{meeting?.book_id?.author}</h4>
+        </h3>
+        <h4 className="db-card__book-author">{meeting?.book_id?.author}</h4>
       </div>
     </section>
   );
