@@ -1,6 +1,7 @@
 import { useContext } from "react";
-import MeetingContext from "../context/meeting/MeetingContext";
-import CalendarIcon from "./icons/CalendarIcon";
+import MeetingContext from "../../context/meeting/MeetingContext";
+import CalendarIcon from "../icons/CalendarIcon";
+import LocationIcon from "../icons/LocationIcon";
 
 const NextMeeting = () => {
   const { meeting, meetingLoading } = useContext(MeetingContext);
@@ -13,8 +14,9 @@ const NextMeeting = () => {
         <p>{meeting?.date || "TBA"}</p>
         <p>{meeting?.time || "TBA"}</p>
       </div>
-      <div className="rounded-md bg-violet-900 p-2">
-        <p className="">{meeting?.location || "TBA"}</p>
+      <div className="db-card__meeting-line">
+        <LocationIcon fill="none" size="48" />
+        <p>{meeting?.location || "TBA"}</p>
       </div>
       {/* {isAdmin && (
           <Link className="btn btn-outline grow h-auto min-h-10" to="/admin">
