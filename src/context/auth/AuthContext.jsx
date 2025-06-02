@@ -15,7 +15,7 @@ export const AuthProvider = ({ children }) => {
 
   const registerUser = async (email, password, username) => {
     const newUserData = await signUpUser(email, password, username);
-    console.log(getUserData(newUserData.session.access_token));
+    // console.log(getUserData(newUserData.session.access_token));
     newUserData && (await setUserData());
   };
 

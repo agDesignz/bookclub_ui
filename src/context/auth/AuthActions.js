@@ -60,9 +60,9 @@ const fetchSession = async () => {
     console.error("Error fetching session:", error);
     return;
   } else if (session) {
-    console.log(session.access_token);
+    // console.log(session.access_token);
     const userData = getUserData(session.access_token);
-    console.log("userData:", userData);
+    // console.log("userData:", userData);
     return userData;
   } else {
     console.log("No active session found.");
