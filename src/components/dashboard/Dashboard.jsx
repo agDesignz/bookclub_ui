@@ -3,7 +3,7 @@ import NextMeeting from "./NextMeeting";
 
 const Dashboard = () => {
   return (
-    <section className="grid gap-8 sm:grid-cols-2">
+    <section className="grid gap-8 lg:grid-cols-2">
       <div className="flex flex-col gap-4 md-gap-8">
         <NextBook />
         <NextMeeting />

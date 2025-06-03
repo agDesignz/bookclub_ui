@@ -1,7 +1,9 @@
 import { useContext } from "react";
 import MeetingContext from "../../context/meeting/MeetingContext";
-import CalendarIcon from "../icons/CalendarIcon";
-import LocationIcon from "../icons/LocationIcon";
+// import CalendarIcon from "../icons/CalendarIcon";
+// import LocationIcon from "../icons/LocationIcon";
+import locationIcon from "../../assets/icons/location.svg";
+import calendarIcon from "../../assets/icons/calendar.svg";
 
 const NextMeeting = () => {
   const { meeting, meetingLoading } = useContext(MeetingContext);
@@ -10,12 +12,22 @@ const NextMeeting = () => {
     <section className="db-card">
       <h2 className="db-card__main-heading">Next Meeting</h2>
       <div className="db-card__meeting-line">
-        <CalendarIcon fill="none" size="48" />
+        {/* <CalendarIcon fill="none" size="48" /> */}
+        <img
+          src={calendarIcon}
+          alt="calendar icon"
+          className="db-card__meeting-icon"
+        />
         <p>{meeting?.date || "TBA"}</p>
         <p>{meeting?.time || "TBA"}</p>
       </div>
       <div className="db-card__meeting-line">
-        <LocationIcon fill="none" size="48" />
+        {/* <LocationIcon fill="none" size="48" /> */}
+        <img
+          src={locationIcon}
+          alt="location icon"
+          className="db-card__meeting-icon"
+        />
         <p>{meeting?.location || "TBA"}</p>
       </div>
       {/* {isAdmin && (
