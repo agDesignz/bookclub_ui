@@ -10,7 +10,6 @@ const getMeeting = async () => {
   if (!error) {
     const { date, time: rawTime, location, book_id } = data[0];
     const time = formatTime(rawTime);
-    console.log("meeting_data:", data[0]);
     return { date, time, location, book_id };
   } else {
     console.log("getMeeting fetch error: ", error);

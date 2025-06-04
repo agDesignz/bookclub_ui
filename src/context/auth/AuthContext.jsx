@@ -32,10 +32,8 @@ export const AuthProvider = ({ children }) => {
 
   const setUserData = async () => {
     const currentUser = await fetchSession();
-    console.log("currentUser:", currentUser);
     if (currentUser) {
       setUser(currentUser);
-      console.log("New User Set:", user);
     } else {
       setUser(null);
     }

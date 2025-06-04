@@ -7,7 +7,6 @@ const getAllMeetings = async () => {
     .order("date", { ascending: false });
 
   if (!error) {
-    console.log("getAllMeetings data: ", data);
     return data;
   } else {
     console.log("getAllMeetings error: ", error);

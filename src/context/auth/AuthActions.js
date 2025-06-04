@@ -3,6 +3,7 @@ import supabase from "../../supabaseClient";
 const getUserData = (accessToken) => {
   try {
     const decodedToken = JSON.parse(atob(accessToken.split(".")[1]));
+    console.log("token:", decodedToken);
     return decodedToken;
   } catch (error) {
     return `Error with the user session: ${error.message}`;

@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Header from "./components/layout/Header";
 import Profile from "./pages/Profile";
 import Archive from "./pages/Archive";
+import Bookshelf from "./pages/Bookshelf";
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <main className="container flex-1 flex flex-col">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/bookshelf" element={<Bookshelf />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/archive" element={<Archive />} />
           </Routes>
