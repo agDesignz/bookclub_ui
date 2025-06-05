@@ -40,7 +40,7 @@ const Register = () => {
           name="email"
           value={signupData?.email || ""}
           placeholder="Email"
-          className="auth-form__input"
+          className="form__input"
           onChange={handleSignupChange}
         />
         <label hidden htmlFor="username">
@@ -51,7 +51,7 @@ const Register = () => {
           name="username"
           value={signupData?.username || ""}
           placeholder="Username"
-          className="auth-form__input"
+          className="form__input"
           onChange={handleSignupChange}
         />
         <label hidden htmlFor="password">
@@ -62,7 +62,7 @@ const Register = () => {
           name="password"
           value={signupData?.password || ""}
           placeholder="Enter Password"
-          className="auth-form__input"
+          className="form__input"
           onChange={handleSignupChange}
         />
         <label hidden htmlFor="confirmPassword">
@@ -73,7 +73,7 @@ const Register = () => {
           name="confirmPassword"
           value={signupData?.confirmPassword || ""}
           placeholder="Confirm Password"
-          className="auth-form__input"
+          className="form__input"
           onChange={handleSignupChange}
         />
         {/* <AltchaWidget onVerify={handleAltchaVerify} /> */}

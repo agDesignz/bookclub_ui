@@ -34,7 +34,7 @@ const Login = () => {
         name="email"
         value={loginData?.email || ""}
         placeholder="Email"
-        className="auth-form__input"
+        className="form__input"
         onChange={handleLoginChange}
       />
       <label hidden htmlFor="password">
@@ -45,7 +45,7 @@ const Login = () => {
         name="password"
         value={loginData?.password || ""}
         placeholder="Enter Password"
-        className="auth-form__input"
+        className="form__input"
         onChange={handleLoginChange}
       />
       <button

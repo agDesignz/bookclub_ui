@@ -4,6 +4,7 @@ import Header from "./components/layout/Header";
 import Profile from "./pages/Profile";
 import Archive from "./pages/Archive";
 import Bookshelf from "./pages/Bookshelf";
+import Search from "./pages/Search";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/bookshelf" element={<Bookshelf />} />
+            <Route path="/search" element={<Search />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/archive" element={<Archive />} />
           </Routes>

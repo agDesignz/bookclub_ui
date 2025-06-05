@@ -11,6 +11,7 @@ const Dashboard = () => {
       </div>
       <div className="flex flex-col gap-4 md-gap-8">
         <Link to="/bookshelf">Bookshelf</Link>
+        <Link to="/search">Search</Link>
       </div>
     </section>
   );
