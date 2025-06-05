@@ -1,5 +1,5 @@
 .db-card {
-  @apply grid md:items-start gap-4 w-full p-3 md:p-5 border border-lemon-700/50 rounded-lg md:rounded-2xl;
+  @apply grid md:items-start gap-4 gap-x-6 w-full p-3 md:p-5 border border-lemon-700/50 rounded-lg md:rounded-2xl;
 
   &__main-heading {
     @apply col-span-full text-center font-mont;
@@ -10,15 +10,15 @@
   }
 
   &__content-text {
-    @apply grid gap-2;
+    @apply grid gap-1 content-start;
   }
 
   &__book-title {
-    @apply font-aleg text-2xl md:text-5xl 2xl:text-6xl;
+    @apply font-aleg tracking-wider font-medium text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl;
   }
 
   &__book-author {
-    @apply font-aleg italic text-lg lg:text-2xl ml-4;
+    @apply font-aleg tracking-wider italic text-xl lg:text-2xl;
   }
 
   &__meeting-line {
@@ -29,7 +29,23 @@
     @apply w-6 sm:w-7;
   }
 
+  &__suggestion {
+    @apply col-span-full sm:col-start-2 grid gap-1 content-start;
+
+    & h4 {
+      @apply text-2xl md:text-3xl font-normal;
+    }
+
+    & p {
+      @apply text-xl md:text-2xl font-extralight italic;
+    }
+  }
+
   &--book {
     @apply grid-cols-[max-content_1fr];
+  }
+
+  &--bookshelf {
+    @apply grid-rows-[max-content_max-content];
   }
 }

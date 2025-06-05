@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import getAllBooks from "../api/book/getAllBooks";
+import BookCard from "../components/bookshelf/BookCard";
 
 const Bookshelf = () => {
   const [books, setBooks] = useState(null);
@@ -7,7 +8,6 @@ const Bookshelf = () => {
   const fetchBooks = async () => {
     const bookData = await getAllBooks();
     if (bookData) {
-      console.log("bookData", bookData);
       setBooks(bookData);
     } else {
       setBooks(null);
@@ -18,9 +18,8 @@ const Bookshelf = () => {
     fetchBooks();
   }, []);
   return (
-    <section className="grid md:grid-cols-2 gap-4 md:gap-8">
-      BOOKSHELF
-      {/* {books.length && books.map((book) =>)} */}
+    <section className="grid xl:grid-cols-2 gap-4 md:gap-8">
+      {books && books.map((book) => <BookCard book={book} key={book.id} />)}
     </section>
   );
 };
