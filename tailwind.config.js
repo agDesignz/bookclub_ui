@@ -99,6 +99,8 @@ export default {
       },
       backgroundImage: {
         "radial-dark": `radial-gradient(ellipse 120% 120% at 50% -20%, theme('colors.blue.400'), theme('colors.blue.100'))`,
+        modal:
+          "radial-gradient(circle, theme('colors.asparagus.300'), theme('colors.asparagus.200') 100%)",
       },
     },
   },

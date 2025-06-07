@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import getAllBooks from "../api/book/getAllBooks";
-import BookCard from "../components/bookshelf/BookCard";
+import BookCard from "../components/book/BookCard";
 
 const Bookshelf = () => {
   const [books, setBooks] = useState(null);

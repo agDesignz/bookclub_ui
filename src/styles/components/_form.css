@@ -5,7 +5,7 @@
   }
 
   &__button {
-    @apply btn btn-wide btn-success btn-soft rounded-full;
+    @apply btn btn-success btn-soft rounded-full;
 
     &--error {
       @apply btn-error;

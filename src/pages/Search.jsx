@@ -41,7 +41,7 @@ const Search = () => {
   }, [page]);
 
   return (
-    <section className="grid gap-8 md:gap-16 md:grid-cols-2">
+    <section className="grid gap-8 md:gap-16 md:grid-cols-2 items-start">
       <form className="grid gap-4 grid-cols-2">
         <input
           type="text"
@@ -73,7 +73,7 @@ const Search = () => {
         )}
         {/* </div> */}
       </form>
-      <div className="flex flex-col gap-3 basis-full">
+      <div className="grid grid-cols-2 gap-3 basis-full">
         {loading ? (
           <span className="loading loading-bars loading-md m-auto"></span>
         ) : searchResults.books ? (

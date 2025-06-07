@@ -13,7 +13,7 @@ const fetchBookData = async (title, author, page) => {
       const filteredBooks = payload.docs.filter(
         (book) => book.title && book.author_name
       );
-
+      console.log("book data:", filteredBooks);
       return { books: filteredBooks, numFound: payload.numFound };
     }
   } catch (error) {
