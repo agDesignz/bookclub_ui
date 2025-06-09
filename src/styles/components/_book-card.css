@@ -29,6 +29,10 @@
     @apply w-6 sm:w-7;
   }
 
+  &__controls {
+    @apply flex gap-4 justify-center md:justify-end;
+  }
+
   &__details {
     @apply col-span-full sm:col-start-2 grid gap-1 content-start;
 

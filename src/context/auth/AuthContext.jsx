@@ -15,7 +15,6 @@ export const AuthProvider = ({ children }) => {
   const [userData, setUserData] = useState(null); // custom claims
 
   const loadSessionData = async () => {
-    console.log("loading session data...");
     const { sessionUser, sessionData } = await fetchSessionData();
     if (sessionUser) {
       setUser(sessionUser);
@@ -32,7 +31,6 @@ export const AuthProvider = ({ children }) => {
 
   const logInUser = async (email, password) => {
     const result = await signInUser(email, password);
-    console.log("login result:", result);
     if (result) await loadSessionData();
   };
 

@@ -1,7 +1,14 @@
 import BookCover from "../book/BookCover";
 import closeIcon from "../../assets/icons/close.svg";
+import insertBook from "../../api/book/insertBook";
 
-const SearchModal = ({ modalData, showModal, resetModal }) => {
+const SearchModal = ({ modalData, showModal, resetModal, userData }) => {
+  const handleAddBook = async () => {
+    const result = await insertBook(modalData, userData.id);
+    if (result === "success") {
+      resetModal();
+    }
+  };
   return (
     <section
       className={`search-modal ${
@@ -24,9 +31,13 @@ const SearchModal = ({ modalData, showModal, resetModal }) => {
           </div>
         </div>
 
-        <p className="font-extralight">{modalData?.description}</p>
+        <p className="font-light md:text-lg lg:text-xl">
+          {modalData?.description}
+        </p>
         <div className="book-card__controls">
-          <button className="btn--outline">Add to shelf</button>
+          <button className="btn--outline" onClick={handleAddBook}>
+            Add to shelf
+          </button>
         </div>
       </div>
     </section>

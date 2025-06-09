@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchModal from "./SearchModal";
 import { useAuth } from "../../context/auth/AuthContext";
 
@@ -14,7 +14,7 @@ const SearchResults = ({
   const [modalData, setModalData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { books, numFound } = searchResults;
-  const { userData } = useAuth();
+  const { user } = useAuth();
 
   const resetModal = () => {
     setShowModal(false);
@@ -34,10 +34,6 @@ const SearchResults = ({
     setShowModal(true);
     // document.getElementById("book_modal").showModal();
   };
-
-  useEffect(() => {
-    console.log(userData);
-  }, []);
 
   return (
     <>
@@ -87,7 +83,7 @@ const SearchResults = ({
             modalData={modalData}
             showModal={showModal}
             resetModal={resetModal}
-
+            userData={user}
             // username={userData.username}
           />
         </>

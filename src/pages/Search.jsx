@@ -16,7 +16,6 @@ const Search = () => {
     const searchData = await fetchBookData(title, author, 1);
     setSearchResults(searchData);
     setLoading(false);
-    console.log(searchResults);
   };
 
   const handlePageChange = async (newPage) => {

@@ -21,9 +21,6 @@ const BookCover = ({ coverData }) => {
 
   useEffect(() => {
     // Reset loading/error when coverData changes
-    console.log("Cover data", coverData);
-    console.log("Image source:", imageSrc);
-
     getImage(coverData.cover);
   }, [coverData]);
 
