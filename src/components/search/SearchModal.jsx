@@ -1,6 +1,5 @@
 import BookCover from "../book/BookCover";
 import closeIcon from "../../assets/icons/close.svg";
-import CloseIcon from "../icons/CloseIcon";
 
 const SearchModal = ({ modalData, showModal, resetModal }) => {
   return (
