@@ -6,7 +6,7 @@ const getAllBooks = async () => {
   if (error) {
     console.error("Error fetching books:", error);
   } else {
-    console.log("Books with usernames:", data);
+    // console.log("Books with usernames:", data);
     return data;
   }
 };

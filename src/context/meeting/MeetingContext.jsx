@@ -1,9 +1,11 @@
 import { createContext, useEffect, useState } from "react";
 import getMeeting from "../../api/meeting/getMeeting";
+import { useAuth } from "../auth/AuthContext";
 
 const MeetingContext = createContext();
 
 export const MeetingProvider = ({ children }) => {
+  const { user } = useAuth();
   const [meeting, setMeeting] = useState(null);
   const [meetingLoading, setMeetingLoading] = useState(false);
 
@@ -17,7 +19,7 @@ export const MeetingProvider = ({ children }) => {
       }
     };
     fetchMeetingData();
-  }, []);
+  }, [user]);
 
   return (
     <MeetingContext.Provider value={{ meeting, meetingLoading }}>

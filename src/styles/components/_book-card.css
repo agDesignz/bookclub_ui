@@ -34,10 +34,10 @@
   }
 
   &__details {
-    @apply col-span-full sm:col-start-2 grid gap-1 content-start;
+    @apply col-span-full h-full sm:col-start-2 grid grid-rows-[auto_auto_1fr] gap-2 content-start;
 
     & h4 {
-      @apply text-2xl md:text-3xl font-normal;
+      @apply text-xl md:text-2xl font-normal;
     }
   }
 
@@ -49,6 +49,6 @@
   }
 
   &--bookshelf {
-    @apply grid-rows-[max-content_max-content];
+    @apply grid-rows-[max-content_1fr];
   }
 }
