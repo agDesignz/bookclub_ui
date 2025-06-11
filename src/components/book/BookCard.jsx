@@ -1,8 +1,6 @@
 import { useState } from "react";
-import { useAuth } from "../../context/auth/AuthContext";
 
 const BookCard = ({ book, user, removeBook }) => {
-  // const { user } = useAuth();
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleBookDelete = () => {

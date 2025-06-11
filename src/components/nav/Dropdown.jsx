@@ -1,6 +1,12 @@
 import UserIcon from "../icons/UserIcon";
+import { Link, useNavigate } from "react-router";
 
-const Dropdown = ({ logOut }) => {
+const Dropdown = ({ logOut, isAdmin }) => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    logOut();
+    navigate("/");
+  };
   return (
     <div className="dropdown dropdown-end">
       <div tabIndex={0} role="button" className="">
@@ -10,13 +16,15 @@ const Dropdown = ({ logOut }) => {
         tabIndex={0}
         className="dropdown-content menu rounded-box z-1 w-32 p-2 mt-4 gap-4 shadow-sm"
       >
+        {isAdmin && (
+          <li>
+            <Link to="/admin" className="btn btn-ghost btn-warning">
+              Admin
+            </Link>
+          </li>
+        )}
         <li>
-          <button className="btn btn-primary" onClick={logOut}>
-            Sign Out
-          </button>
-        </li>
-        <li>
-          <button className="btn btn-soft btn-error" onClick={logOut}>
+          <button className="btn btn-ghost btn-error" onClick={handleLogout}>
             Sign Out
           </button>
         </li>

@@ -11,17 +11,15 @@ import {
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null); // core Supabase user
   const [userData, setUserData] = useState(null); // custom claims
 
   const loadSessionData = async () => {
     const { sessionUser, sessionData } = await fetchSessionData();
-    if (sessionUser) {
-      setUser(sessionUser);
-    }
-    if (sessionData) {
-      setUserData(sessionData);
-    }
+    if (sessionUser) setUser(sessionUser);
+    if (sessionData) setUserData(sessionData);
+    setLoading(false);
   };
 
   const registerUser = async (email, password, username) => {
@@ -55,6 +53,7 @@ export const AuthProvider = ({ children }) => {
           console.log("SESSION DETECTED -- ", session);
           setUser(session.user);
           setUserData(decodeToken(session.access_token));
+          setLoading(false);
         }
       }
     );
@@ -66,7 +65,7 @@ export const AuthProvider = ({ children }) => {
 
   return (
     <AuthContext.Provider
-      value={{ user, userData, registerUser, logInUser, logOut }}
+      value={{ user, userData, loading, registerUser, logInUser, logOut }}
     >
       {children}
     </AuthContext.Provider>

@@ -7,12 +7,15 @@ const getMeeting = async () => {
     .select(`*, book_id("*")`)
     .order("date", { ascending: false })
     .limit(1);
-  if (!error) {
+  if (error) {
+    console.log("getMeeting fetch error: ", error);
+    return;
+  } else if (data.length) {
     const { date, time: rawTime, location, book_id } = data[0];
     const time = formatTime(rawTime);
     return { date, time, location, book_id };
   } else {
-    console.log("getMeeting fetch error: ", error);
+    console.log("No meeting data");
     return;
   }
 };
