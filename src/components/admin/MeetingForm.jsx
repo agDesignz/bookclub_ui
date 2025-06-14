@@ -4,40 +4,12 @@ import getAllBooks from "../../api/book/getAllBooks";
 
 const MeetingForm = () => {
   const { meeting, createMeeting } = useContext(MeetingContext);
-  const [isEditing, setIsEditing] = useState(meeting);
-  const [bookLoading, setBookLoading] = useState(true);
-  const [books, setBooks] = useState([]);
-  const [meetingData, setMeetingData] = useState(isEditing ? meeting : null);
+  const [formOpen, setFormOpen] = useState(false);
+  const [formAction, setFormAction] = useState("Edit");
+  const [meetingData, setMeetingData] = useState(null);
 
-  const handleMeetChange = (e) => {
-    setMeetingData({ ...meetData, [e.target.name]: e.target.value });
-  };
-
-  const fetchBooks = async () => {
-    const response = await getAllBooks();
-    setBooks(response);
-    setBookLoading(false);
-  };
-
-  const handleSelectBook = (e) => {
-    e.preventDefault();
-    console.log("selecting book");
-    // document.getElementById("select_book").showModal();
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    // console.log("Date in State:", meetData.date);
-    // const dateCheck = checkDate(meetData.date);
-    // if (dateCheck != "valid") {
-    //   alert(dateCheck);
-    //   return;
-    // }
-    // if (isEditing) {
-    //   await editMeeting(meetData);
-    // } else {
-    //   await newMeeting(meetData);
-    // }
+  const handleMeetingChange = (e) => {
+    setMeetingData({ ...meetingData, [e.target.name]: e.target.value });
   };
 
   const handleDelete = async (e) => {
@@ -47,84 +19,114 @@ const MeetingForm = () => {
     console.log("delete response:", response);
   };
 
-  const toggleEditing = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (isEditing) {
-      setMeetData({});
-    } else {
-      setMeetData(meeting);
+    console.log(meetingData);
+    if (formAction === "Create") {
+      const result = await createMeeting(meetingData);
+      setMeetingData(result[0]);
     }
-    setIsEditing(!isEditing);
+    setFormOpen(false);
+  };
+
+  const openEdit = () => {
+    setFormOpen(true);
+    setFormAction("Update");
+  };
+
+  const openNew = () => {
+    setMeetingData(null);
+    setFormOpen(true);
+    setFormAction("Create");
+  };
+
+  const cancelChange = () => {
+    setFormOpen(false);
+    if (meetingData === null) setMeetingData(meeting);
   };
 
   useEffect(() => {
     setMeetingData(meeting);
-    console.log("Meeting Data:", meetingData);
+    // console.log("Meeting Data:", meetingData);
   }, [meeting]);
 
   return (
-    <form className="flex flex-col gap-4 items-center" onSubmit={handleSubmit}>
-      <div className="flex gap-4 lg:gap-8 w-full">
-        <h2 className="grow">
-          {isEditing ? "Edit Meeting" : "Create Meeting"}
-        </h2>
-        {isEditing && (
-          <button className="btn btn-error btn-xs" onClick={handleDelete}>
-            Delete Meeting
-          </button>
-        )}
-        {meeting && (
-          <button className="btn btn-outline btn-xs" onClick={toggleEditing}>
-            {isEditing ? "New Meeting" : "Update Meeting"}
-          </button>
-        )}
-      </div>
-      <label hidden htmlFor="email">
-        Location
-      </label>
-      <input
-        type="text"
-        name="location"
-        value={meetingData?.location || ""}
-        placeholder="Location"
-        className="border rounded-lg py-3 px-3 bg-transparent border-indigo-600 placeholder-white-500 text-white w-full"
-        onChange={handleMeetChange}
-      />
-      <label hidden htmlFor="username">
-        Date
-      </label>
-      <input
-        type="date"
-        name="date"
-        value={meetingData?.date || ""}
-        placeholder="Date"
-        className="border rounded-lg py-3 px-3 bg-transparent border-indigo-600 placeholder-white-500 text-white w-full"
-        onChange={handleMeetChange}
-      />
-      <label hidden htmlFor="password">
-        Time
-      </label>
-      <input
-        type="time"
-        name="time"
-        value={meetingData?.htmlTime || ""}
-        placeholder="Select Time"
-        className="border rounded-lg py-3 px-3 bg-transparent border-indigo-600 placeholder-white-500 text-white w-full"
-        onChange={handleMeetChange}
-      />
-
-      <div className="flex flex-col sm:flex-row gap-4 lg:gap-8 w-full">
+    <section className="book-card gap-7" onSubmit={handleSubmit}>
+      {formOpen ? (
         <button
-          className="btn btn-outline w-full sm:w-1/2"
-          onClick={handleSelectBook}
+          className="btn btn-soft btn-error rounded-full justify-self-start"
+          onClick={cancelChange}
         >
-          {meetingData?.book_id?.title || "Select Book"}
+          Cancel
         </button>
-        <button className="btn btn-success grow" type="submit">
-          {isEditing ? "Update Meeting" : "Create Meeting"}
+      ) : (
+        <div className="grid gap-4 grid-cols-3">
+          <button
+            className="btn btn-soft btn-info rounded-full"
+            onClick={openEdit}
+          >
+            Edit
+          </button>
+          <button
+            className="btn btn-soft btn-success rounded-full"
+            onClick={openNew}
+          >
+            New
+          </button>
+          <button className="btn btn-soft btn-error rounded-full">
+            Delete
+          </button>
+        </div>
+      )}
+
+      <form className="grid gap-4 sm:grid-cols-[1fr_1fr]">
+        <label hidden htmlFor="email">
+          Location
+        </label>
+        <input
+          type="text"
+          name="location"
+          value={meetingData?.location || ""}
+          placeholder="Location"
+          className="form__input form__input--dark col-span-full"
+          disabled={!formOpen}
+          onChange={handleMeetingChange}
+        />
+        <label hidden htmlFor="username">
+          Date
+        </label>
+        <input
+          type="date"
+          name="date"
+          value={meetingData?.date || ""}
+          placeholder="Date"
+          className="form__input form__input--dark"
+          disabled={!formOpen}
+          onChange={handleMeetingChange}
+        />
+        <label hidden htmlFor="password">
+          Time
+        </label>
+        <input
+          type="time"
+          name="time"
+          value={meetingData?.time || ""}
+          placeholder="Select Time"
+          className="form__input form__input--dark"
+          disabled={!formOpen}
+          onChange={handleMeetingChange}
+        />
+
+        <button
+          className={`btn btn-outline btn-success rounded-full col-span-full ${
+            !formOpen && "invisible"
+          }`}
+          type="submit"
+        >
+          {formAction} Meeting
         </button>
-      </div>
-    </form>
+      </form>
+    </section>
   );
 };
 export default MeetingForm;

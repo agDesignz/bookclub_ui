@@ -1,5 +1,5 @@
 .book-card {
-  @apply grid md:items-start gap-4 gap-x-6 w-full p-3 md:p-5 border border-lemon-700/50 rounded-lg md:rounded-2xl;
+  @apply grid md:items-start gap-4 gap-x-6 w-full sm:p-3 md:p-5 sm:border border-lemon-700/50 rounded-lg md:rounded-2xl;
 
   &__main-heading {
     @apply col-span-full text-center font-mont;
@@ -12,6 +12,10 @@
   &__content-text {
     @apply grid gap-1 content-start;
   }
+
+  /* &__cols-2 {
+    @apply grid gap-4 sm:grid-cols-[1fr_1fr];
+  } */
 
   &__book-title {
     @apply font-aleg tracking-wider font-medium text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl;

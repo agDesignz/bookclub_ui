@@ -5,7 +5,7 @@ const AdminRoute = () => {
   const { userData, loading } = useAuth();
 
   if (loading) {
-    return <div>Loading...</div>; // Or a spinner, or null
+    return <span className="loading loading-bars loading-xl"></span>;
   }
 
   return userData?.is_admin ? <Outlet /> : <Navigate to="/" />;

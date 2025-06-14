@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import getMeeting from "../../api/meeting/getMeeting";
-import insertMeeting from "../../api/meeting/getMeeting";
+import insertMeeting from "../../api/meeting/insertMeeting";
 import { useAuth } from "../auth/AuthContext";
 
 const MeetingContext = createContext();
@@ -14,14 +14,20 @@ export const MeetingProvider = ({ children }) => {
     setMeetingLoading(true);
     const meetingData = await getMeeting();
     if (meetingData) {
+      // console.log("meetingData:", meetingData);
       setMeeting(meetingData);
       setMeetingLoading(false);
     }
   };
 
   const createMeeting = async (input) => {
+    console.log("input:", input);
     const newMeeting = await insertMeeting(input);
-    if (newMeeting) console.log("New Meeting Success!");
+    if (newMeeting) {
+      console.log("newMeeting:", newMeeting);
+      setMeeting(newMeeting[0]);
+      return newMeeting;
+    }
   };
 
   useEffect(() => {
