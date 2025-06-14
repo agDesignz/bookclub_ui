@@ -3,7 +3,8 @@ import MeetingContext from "../../context/meeting/MeetingContext";
 import getAllBooks from "../../api/book/getAllBooks";
 
 const MeetingForm = () => {
-  const { meeting, createMeeting } = useContext(MeetingContext);
+  const { meeting, createMeeting, changeMeeting, deleteCurrentMeeting } =
+    useContext(MeetingContext);
   const [formOpen, setFormOpen] = useState(false);
   const [formAction, setFormAction] = useState("Edit");
   const [meetingData, setMeetingData] = useState(null);
@@ -12,32 +13,43 @@ const MeetingForm = () => {
     setMeetingData({ ...meetingData, [e.target.name]: e.target.value });
   };
 
-  const handleDelete = async (e) => {
-    e.preventDefault();
-    console.log("delete data:", meeting.id, meeting.book_id);
-    const response = await deleteMeeting(meeting.id, meeting.book_id);
-    console.log("delete response:", response);
-  };
+  // const handleDelete = async (e) => {
+  //   e.preventDefault();
+  //   const
+  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(meetingData);
-    if (formAction === "Create") {
+    if (formAction === "CREATE") {
       const result = await createMeeting(meetingData);
       setMeetingData(result[0]);
+    }
+    if (formAction === "UPDATE") {
+      console.log("form meetingData:", meetingData);
+      const result = await changeMeeting(meetingData);
+      setMeetingData(result[0]);
+    }
+    if (formAction === "DELETE") {
+      deleteCurrentMeeting(meetingData.id);
     }
     setFormOpen(false);
   };
 
   const openEdit = () => {
     setFormOpen(true);
-    setFormAction("Update");
+    setFormAction("UPDATE");
   };
 
   const openNew = () => {
     setMeetingData(null);
     setFormOpen(true);
-    setFormAction("Create");
+    setFormAction("CREATE");
+  };
+
+  const openDelete = () => {
+    setFormOpen(true);
+    setFormAction("DELETE");
   };
 
   const cancelChange = () => {
@@ -73,7 +85,10 @@ const MeetingForm = () => {
           >
             New
           </button>
-          <button className="btn btn-soft btn-error rounded-full">
+          <button
+            className="btn btn-soft btn-error rounded-full"
+            onClick={openDelete}
+          >
             Delete
           </button>
         </div>
@@ -118,12 +133,12 @@ const MeetingForm = () => {
         />
 
         <button
-          className={`btn btn-outline btn-success rounded-full col-span-full ${
-            !formOpen && "invisible"
-          }`}
+          className={`btn btn-outline btn-${
+            formAction === "DELETE" ? "error" : "success"
+          } rounded-full col-span-full ${!formOpen && "invisible"}`}
           type="submit"
         >
-          {formAction} Meeting
+          {formAction} MEETING
         </button>
       </form>
     </section>
