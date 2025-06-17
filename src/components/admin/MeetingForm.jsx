@@ -60,7 +60,6 @@ const MeetingForm = () => {
 
   useEffect(() => {
     setMeetingData(meeting);
-    console.log(meetingData);
   }, [meeting]);
 
   return (
