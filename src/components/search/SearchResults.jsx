@@ -5,12 +5,7 @@ import { useAuth } from "../../context/auth/AuthContext";
 import fetchBookDescription from "../../api/open-library/fetchBookDescription";
 // import BookInputManual from "./BookInputManual";
 
-const SearchResults = ({
-  searchResults,
-  handlePageChange,
-  page,
-  clearInput,
-}) => {
+const SearchResults = ({ searchResults, handlePageChange, page }) => {
   const [modalData, setModalData] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { books, numFound } = searchResults;

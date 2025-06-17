@@ -24,7 +24,6 @@ export const MeetingProvider = ({ children }) => {
   };
 
   const createMeeting = async (input) => {
-    console.log("input:", input);
     const newMeeting = await insertMeeting(input);
     if (newMeeting) {
       // console.log("newMeeting:", newMeeting);
@@ -34,7 +33,6 @@ export const MeetingProvider = ({ children }) => {
   };
 
   const changeMeeting = async (input) => {
-    console.log("context input:", input);
     const newMeeting = await updateMeeting(input);
     if (newMeeting) {
       setMeeting(newMeeting[0]);

@@ -10,8 +10,7 @@ const NextMeeting = () => {
   const [displayTime, setDisplayTime] = useState(null);
 
   useEffect(() => {
-    console.log("received meeting:", meeting);
-    if (meeting) setDisplayTime(formatTime(meeting?.time));
+    if (meeting?.time) setDisplayTime(formatTime(meeting?.time));
   }, [meeting]);
 
   if (meetingLoading) {

@@ -1,6 +1,6 @@
 import supabase from "../../supabaseClient";
 
-const insertMeeting = async ({ date, time, location }) => {
+const insertMeeting = async ({ date, time, location, book_id }) => {
   const { data, error } = await supabase
     .from("meeting")
     .insert([
@@ -8,9 +8,10 @@ const insertMeeting = async ({ date, time, location }) => {
         date,
         time,
         location,
+        book_id: book_id.id,
       },
     ])
-    .select();
+    .select(`*, book_id("*")`);
 
   if (error) {
     return error;

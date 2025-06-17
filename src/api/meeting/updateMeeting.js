@@ -1,11 +1,11 @@
 import supabase from "../../supabaseClient";
 
-const updateMeeting = async ({ date, time, location, id }) => {
+const updateMeeting = async ({ date, time, location, id, book_id }) => {
   const { data, error } = await supabase
     .from("meeting")
-    .update({ date, time, location })
+    .update({ date, time, location, book_id: book_id.id })
     .eq("id", id)
-    .select();
+    .select(`*, book_id("*")`);
 
   if (error) {
     console.log("update error:", error);

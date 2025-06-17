@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import MeetingContext from "../../context/meeting/MeetingContext";
-import getAllBooks from "../../api/book/getAllBooks";
+// import getAllBooks from "../../api/book/getAllBooks";
+import BookSelect from "./BookSelect";
 
 const MeetingForm = () => {
   const { meeting, createMeeting, changeMeeting, deleteCurrentMeeting } =
@@ -13,10 +14,9 @@ const MeetingForm = () => {
     setMeetingData({ ...meetingData, [e.target.name]: e.target.value });
   };
 
-  // const handleDelete = async (e) => {
-  //   e.preventDefault();
-  //   const
-  // };
+  const addBook = (checkedBook) => {
+    setMeetingData({ ...meetingData, book_id: checkedBook });
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +28,7 @@ const MeetingForm = () => {
     if (formAction === "UPDATE") {
       console.log("form meetingData:", meetingData);
       const result = await changeMeeting(meetingData);
+      console.log("updated:", result);
       setMeetingData(result[0]);
     }
     if (formAction === "DELETE") {
@@ -54,12 +55,12 @@ const MeetingForm = () => {
 
   const cancelChange = () => {
     setFormOpen(false);
-    if (meetingData === null) setMeetingData(meeting);
+    setMeetingData(meeting);
   };
 
   useEffect(() => {
     setMeetingData(meeting);
-    // console.log("Meeting Data:", meetingData);
+    console.log(meetingData);
   }, [meeting]);
 
   return (
@@ -131,7 +132,11 @@ const MeetingForm = () => {
           disabled={!formOpen}
           onChange={handleMeetingChange}
         />
-
+        <BookSelect
+          book={meetingData?.book_id || "No Book Currently"}
+          addBook={addBook}
+          formOpen={formOpen}
+        />
         <button
           className={`btn btn-outline btn-${
             formAction === "DELETE" ? "error" : "success"

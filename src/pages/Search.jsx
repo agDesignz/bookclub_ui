@@ -80,7 +80,6 @@ const Search = () => {
             searchResults={searchResults}
             handlePageChange={handlePageChange}
             page={page}
-            clearInput={clearInput}
           />
         ) : (
           <h2 className="text-3xl">Find your next read...</h2>
