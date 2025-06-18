@@ -50,7 +50,7 @@ export const AuthProvider = ({ children }) => {
           setUser(null);
           setUserData(null);
         } else if (session) {
-          console.log("SESSION DETECTED -- ", session);
+          // console.log("SESSION DETECTED -- ", session);
           setUser(session.user);
           setUserData(decodeToken(session.access_token));
           setLoading(false);

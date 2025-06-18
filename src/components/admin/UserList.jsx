@@ -33,7 +33,6 @@ const UserList = () => {
       const result = await getAllProfiles();
       if (result) {
         setProfileData(result);
-        console.log("userList result:", result);
         setProfilesLoading(false);
       }
     };
