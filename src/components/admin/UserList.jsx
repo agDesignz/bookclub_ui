@@ -1,10 +1,31 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import getAllProfiles from "../../api/profile/getAllProfiles";
+import updateProfileApproved from "../../api/profile/updateProfileApproved";
 
 const UserList = () => {
   const [profilesLoading, setProfilesLoading] = useState(null);
   const [profileData, setProfileData] = useState(null);
+
+  // const handleDelete = (user) => {
+  //   const confirmation = confirm("Delete?");
+  //   if (confirmation) {
+  //     console.log("user deleted:", user);
+  //   } else {
+  //     console.log("delete canceled");
+  //   }
+  // };
+
+  const approveUser = async (profile) => {
+    const confirmation = confirm(`Approve ${profile.username}?`);
+    if (confirmation) {
+      const result = await updateProfileApproved(profile.id);
+      console.log("result:", result);
+    } else {
+      console.log("not approving");
+      return;
+    }
+  };
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -26,24 +47,29 @@ const UserList = () => {
         profileData.map((profile) => (
           <li
             key={profile.id}
-            className="flex justify-between h-full p-5 bg-blue-400"
+            className="grid grid-cols-[1fr_auto] items-center h-full p-5 bg-gradient-to-tr from-lemon-400 to-lemon-500 text-blue-200 font-open text-xl md:text-2xl"
           >
-            <div className="flex min-w-0 gap-x-4">
-              <div className="min-w-0 flex-auto">
-                <p className="text-sm font-semibold leading-6">
-                  {profile.username}
-                </p>
-                <p className="mt-1 truncate text-xs leading-5">
-                  {profile.email}
-                </p>
-              </div>
+            <div>
+              <h3>{profile.username}</h3>
+              <h3 className="truncate mt-1">{profile.email}</h3>
             </div>
-            <div className="flex min-w-0 gap-4">
+            <div className="grid gap-2">
               {profile.is_approved ? (
-                <p>Approved</p>
+                <h3>Approved</h3>
               ) : (
-                <button>Approve User</button>
+                <button
+                  className="btn btn-soft btn-success rounded-full"
+                  onClick={() => approveUser(profile)}
+                >
+                  Approve User
+                </button>
               )}
+              {/* <button
+                className="btn btn-soft btn-error rounded-full"
+                onClick={() => handleDelete(profile)}
+              >
+                Delete User
+              </button> */}
             </div>
           </li>
         ))}
