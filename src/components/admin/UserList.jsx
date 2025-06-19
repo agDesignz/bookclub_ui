@@ -7,6 +7,14 @@ const UserList = () => {
   const [profilesLoading, setProfilesLoading] = useState(null);
   const [profileData, setProfileData] = useState(null);
 
+  const fetchUsers = async () => {
+    setProfilesLoading(true);
+    const result = await getAllProfiles();
+    if (result) {
+      setProfileData(result);
+      setProfilesLoading(false);
+    }
+  };
   // const handleDelete = (user) => {
   //   const confirmation = confirm("Delete?");
   //   if (confirmation) {
@@ -20,7 +28,12 @@ const UserList = () => {
     const confirmation = confirm(`Approve ${profile.username}?`);
     if (confirmation) {
       const result = await updateProfileApproved(profile.id);
-      console.log("result:", result);
+      result === "success" &&
+        setProfileData((prevState) =>
+          prevState.map((user) =>
+            user.id === profile.id ? { ...user, is_approved: true } : user
+          )
+        );
     } else {
       console.log("not approving");
       return;
@@ -28,14 +41,6 @@ const UserList = () => {
   };
 
   useEffect(() => {
-    const fetchUsers = async () => {
-      setProfilesLoading(true);
-      const result = await getAllProfiles();
-      if (result) {
-        setProfileData(result);
-        setProfilesLoading(false);
-      }
-    };
     fetchUsers();
   }, []);
   return profilesLoading ? (
