@@ -17,7 +17,7 @@ const NextMeeting = () => {
     return <span className="loading loading-bars loading-xl"></span>;
   } else {
     return (
-      <section className="book-card max-[349px]:place-items-center min-[350px]:grid-cols-[1fr_1fr]">
+      <section className="book-card min-[350px]:grid-cols-[1fr_1fr]">
         <h2 className="book-card__main-heading">Next Meeting</h2>
         <div className="book-card__meeting-line">
           <img

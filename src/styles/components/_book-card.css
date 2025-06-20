@@ -1,28 +1,40 @@
 .book-card {
-  @apply grid md:items-start gap-4 gap-x-6 w-full sm:p-3 md:p-5 sm:border border-lemon-700/50 rounded-lg md:rounded-2xl;
+  @apply grid items-center gap-2 md:gap-4 w-full p-2 sm:p-3 md:p-5 border-b sm:border border-lemon-700/50 sm:rounded-lg md:rounded-2xl;
+
+  &--book-shelf {
+    @apply gap-8 grid-cols-[max-content_1fr];
+  }
 
   &__main-heading {
     @apply col-span-full text-center font-mont;
   }
 
   &__book-img {
-    @apply rounded-lg md:rounded w-16 sm:w-20 md:w-24 xl:w-40;
+    @apply rounded-lg md:rounded-md overflow-hidden w-16 sm:w-28 md:w-32 xl:w-40 relative cursor-pointer;
+  }
+
+  &__img-cover {
+    @apply absolute top-0 bottom-0 left-0 right-0 bg-orange text-blue-500 font-mont text-xl opacity-0 transition-opacity duration-200 hover:opacity-100 font-medium flex items-center justify-center;
+  }
+
+  &__details {
+    @apply col-span-full h-full sm:col-start-2 grid auto-rows-[auto_auto] gap-2 content-end;
   }
 
   &__content-text {
-    @apply grid gap-1 content-start;
+    @apply grid content-start sm:gap-2;
   }
 
-  /* &__cols-2 {
-    @apply grid gap-4 sm:grid-cols-[1fr_1fr];
-  } */
-
   &__book-title {
-    @apply font-aleg tracking-wider font-medium text-3xl sm:text-4xl md:text-5xl 2xl:text-6xl;
+    @apply font-aleg tracking-wider font-medium text-2xl sm:text-3xl md:text-4xl;
   }
 
   &__book-author {
-    @apply font-aleg tracking-wider italic text-xl lg:text-2xl;
+    @apply font-aleg tracking-wider italic text-xl sm:text-2xl lg:text-2xl;
+  }
+
+  &__book-username {
+    @apply text-lg sm:text-xl;
   }
 
   &__meeting-line {
@@ -37,22 +49,11 @@
     @apply flex gap-4 justify-center md:justify-end;
   }
 
-  &__details {
-    @apply col-span-full h-full sm:col-start-2 grid grid-rows-[auto_auto_1fr] gap-2 content-start;
-
-    & h4 {
-      @apply text-xl md:text-2xl font-normal;
-    }
-  }
+  /* & h4 {
+    @apply text-xl md:text-2xl font-normal;
+  } */
 
   & p {
     @apply text-xl md:text-2xl font-extralight italic;
-  }
-  &--book {
-    @apply grid-cols-[max-content_1fr];
-  }
-
-  &--bookshelf {
-    @apply grid-rows-[max-content_1fr];
   }
 }

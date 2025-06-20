@@ -2,7 +2,7 @@
   @apply fixed top-0 right-0 left-0;
 
   &__card {
-    @apply flex flex-col gap-2 px-4 py-14 md:p-14 relative w-full h-full overflow-y-auto md:h-auto md:w-11/12 max-w-[1000px] md:rounded-lg bg-modal;
+    @apply flex flex-col gap-2 px-4 py-14 md:p-14 relative w-full h-full overflow-y-auto md:h-auto md:w-11/12 max-w-[1000px] md:rounded-lg bg-gradient-to-tr from-dark_green-400 to-asparagus-400;
   }
 
   &__close-btn {
@@ -14,7 +14,7 @@
   }
 
   &--search {
-    @apply bg-dark_green-100/75 h-screen md:flex justify-center items-center;
+    @apply bg-sandy-100/75 h-screen md:flex justify-center items-center;
   }
 
   &--select {

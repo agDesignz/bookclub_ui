@@ -31,7 +31,7 @@ const Bookshelf = () => {
     fetchBooks();
   }, []);
   return (
-    <section className="grid xl:grid-cols-2 gap-4 md:gap-8">
+    <section className="grid lg:grid-cols-2 gap-10">
       {books &&
         books.map((book) => (
           <BookCard

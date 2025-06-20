@@ -9,12 +9,12 @@ const Dropdown = ({ logOut, isAdmin }) => {
   };
   return (
     <div className="dropdown dropdown-end">
-      <div tabIndex={0} role="button" className="">
+      <div tabIndex={0} role="button" className="tn">
         <UserIcon />
       </div>
       <ul
         tabIndex={0}
-        className="dropdown-content menu rounded-box z-1 w-32 p-2 mt-4 gap-4 shadow-sm"
+        className="dropdown-content menu rounded-box z-50 w-32 p-2 mt-4 gap-4 shadow-sm bg-gradient-to-tr from-blue-400 to-blue-500"
       >
         {isAdmin && (
           <li>
