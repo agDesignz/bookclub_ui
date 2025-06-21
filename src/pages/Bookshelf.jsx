@@ -10,6 +10,7 @@ const Bookshelf = () => {
   const [books, setBooks] = useState(null);
   const [modalData, setModalData] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const resetModal = () => {
     setShowModal(false);
@@ -22,6 +23,15 @@ const Bookshelf = () => {
     } catch (error) {
       console.log(error);
     }
+  };
+
+  const handleBookDelete = (id) => {
+    resetModal();
+    setIsDeleting(true);
+    setTimeout(() => {
+      removeBook(id);
+      setIsDeleting(false);
+    }, 500);
   };
 
   const fetchBooks = async () => {
@@ -43,6 +53,7 @@ const Bookshelf = () => {
           <BookCard
             setModalData={setModalData}
             setShowModal={setShowModal}
+            isDeleting={isDeleting}
             book={book}
             key={book.id}
             user={user}
@@ -54,6 +65,7 @@ const Bookshelf = () => {
         showModal={showModal}
         resetModal={resetModal}
         userData={user}
+        handleBookDelete={handleBookDelete}
       />
     </section>
   );

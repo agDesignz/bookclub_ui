@@ -1,15 +1,15 @@
 import { useState } from "react";
 
-const BookCard = ({ book, user, removeBook, setShowModal, setModalData }) => {
-  const [isDeleting, setIsDeleting] = useState(false);
+const BookCard = ({ book, isDeleting, setShowModal, setModalData }) => {
+  // const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleBookDelete = () => {
-    setIsDeleting(true);
-    setTimeout(() => {
-      removeBook();
-      setIsDeleting(false);
-    }, 500);
-  };
+  // const handleBookDelete = () => {
+  //   setIsDeleting(true);
+  //   setTimeout(() => {
+  //     removeBook();
+  //     setIsDeleting(false);
+  //   }, 500);
+  // };
 
   const handleSeeDetails = (book) => {
     setModalData(book);

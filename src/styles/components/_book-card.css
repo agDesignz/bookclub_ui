@@ -34,7 +34,7 @@
   }
 
   &__book-username {
-    @apply text-lg sm:text-xl;
+    @apply text-xl md:text-2xl;
   }
 
   &__meeting-line {
@@ -53,7 +53,7 @@
     @apply text-xl md:text-2xl font-normal;
   } */
 
-  & p {
-    @apply text-xl md:text-2xl font-extralight italic;
+  &__text {
+    @apply text-lg sm:text-xl md:text-2xl font-extralight;
   }
 }
