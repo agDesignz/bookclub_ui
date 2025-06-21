@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const BookCard = ({ book, user, removeBook }) => {
+const BookCard = ({ book, user, removeBook, setShowModal, setModalData }) => {
   const [isDeleting, setIsDeleting] = useState(false);
 
   const handleBookDelete = () => {
@@ -12,7 +12,8 @@ const BookCard = ({ book, user, removeBook }) => {
   };
 
   const handleSeeDetails = (book) => {
-    console.log("Details!", book);
+    setModalData(book);
+    setShowModal(true);
   };
 
   return (
@@ -20,24 +21,20 @@ const BookCard = ({ book, user, removeBook }) => {
       className={`book-card book-card--book-shelf transition-opacity duration-500 ${
         isDeleting ? "opacity-0" : "opacity-100"
       }`}
+      onClick={() => handleSeeDetails(book)}
     >
-      <figure
+      <img
         className="book-card__book-img"
-        onClick={() => handleSeeDetails(book)}
-      >
-        <img
-          src={`https://covers.openlibrary.org/b/id/${book.cover}-M.jpg`}
-          alt={`cover of ${book.title}`}
-        />
-        <div className="book-card__img-cover">INFO</div>
-      </figure>
+        src={`https://covers.openlibrary.org/b/id/${book.cover}-M.jpg`}
+        alt={`cover of ${book.title}`}
+      />
 
       <div className="book-card__content-text">
         <h2 className="book-card__book-title">{book.title}</h2>
         <h3 className="book-card__book-author">{book.author}</h3>
-        <h4 className="book-card__book-username">
+        {/* <h4 className="book-card__book-username">
           Selected by {book.username}
-        </h4>
+        </h4> */}
       </div>
       {/* <div className="book-card__details"> */}
       {/* {book.suggestion && (
