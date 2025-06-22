@@ -9,7 +9,7 @@ const BookshelfModal = ({
 }) => {
   return (
     <section
-      className={`book-modal book-modal--bookshelf overflow-auto  ${
+      className={`book-modal book-modal--bookshelf overflow-auto items-start ${
         showModal ? "book-modal--show" : "book-modal--hide"
       }`}
     >

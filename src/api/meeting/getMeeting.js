@@ -12,7 +12,7 @@ const getMeeting = async () => {
   } else if (data.length) {
     return data[0];
   } else {
-    console.log("No meeting data");
+    // console.log("No meeting data");
     return;
   }
 };

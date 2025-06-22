@@ -49,12 +49,10 @@ const SearchResults = ({ searchResults, handlePageChange, page }) => {
               }
             >
               <h2 className="text-xl">{book.title}</h2>
-              {book.author_name &&
-                book.author_name.map((auth, i) => (
-                  <h3 className="text-l" key={i}>
-                    {auth}
-                  </h3>
-                ))}
+              <h3 className="text-xl font-extralight italic mt-1">
+                {book.author_name[0]} <br />
+                {book.author_name.length > 1 && "et al"}
+              </h3>
             </button>
           ))}
           <div className="col-span-full flex justify-around mt-4 mb-16">

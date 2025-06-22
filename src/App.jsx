@@ -10,10 +10,10 @@ import Admin from "./pages/admin/Admin";
 
 function App() {
   return (
-    <div className="min-h-screen flex flex-col pb-16 px-2 md:px-4 lg:px-8 text-lemon-900">
+    <div className="h-screen overflow-auto flex flex-col pb-16 px-2 md:px-4 lg:px-8 text-lemon-900">
       <Router>
         <Header />
-        <main className="container flex-1 flex flex-col">
+        <main className="container flex-1 flex flex-col justify-center">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/bookshelf" element={<Bookshelf />} />

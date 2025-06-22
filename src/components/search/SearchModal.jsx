@@ -35,9 +35,11 @@ const SearchModal = ({ modalData, showModal, resetModal, userData }) => {
           {modalData?.description}
         </p>
         <div className="book-card__controls">
-          <button className="btn--outline" onClick={handleAddBook}>
-            Add to shelf
-          </button>
+          {userData && (
+            <button className="btn--outline" onClick={handleAddBook}>
+              Add to shelf
+            </button>
+          )}
         </div>
       </div>
     </section>

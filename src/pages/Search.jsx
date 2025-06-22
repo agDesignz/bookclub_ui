@@ -40,7 +40,7 @@ const Search = () => {
   }, [page]);
 
   return (
-    <section className="grid gap-8 md:gap-16 md:grid-cols-2 items-start">
+    <section className="grid gap-8 md:gap-16 md:grid-cols-2 items-center">
       <form className="grid gap-4 grid-cols-2">
         <input
           type="text"
