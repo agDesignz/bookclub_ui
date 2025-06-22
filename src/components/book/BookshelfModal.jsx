@@ -16,7 +16,7 @@ const BookshelfModal = ({
       <button className="book-modal__close-btn" onClick={resetModal}>
         <img src={closeIcon} alt="close" className="w-full h-full block" />
       </button>
-      <div className="book-card container my-14">
+      <div className="book-card grid-cols-1 max-w-[800px] my-14">
         <div className="book-card__content-text">
           {book?.description && (
             <p className="book-card__text">{book.description}</p>

@@ -1,8 +1,8 @@
 .book-card {
-  @apply grid items-center gap-2 md:gap-4 w-full p-3 md:p-5 sm:border border-lemon-700/50 sm:rounded-lg md:rounded-2xl;
+  @apply grid items-center gap-x-8 gap-y-2 grid-cols-[max-content_1fr] w-full p-3 md:p-5 sm:border border-lemon-700/50 sm:rounded-lg md:rounded-2xl;
 
   &--book-shelf {
-    @apply gap-8 grid-cols-[max-content_1fr] cursor-pointer hover:bg-blue-700/50 active:bg-blue-700/50 focus:bg-blue-700/50;
+    @apply cursor-pointer hover:bg-blue-700/50 active:bg-blue-700/50 focus:bg-blue-700/50;
   }
 
   &__main-heading {

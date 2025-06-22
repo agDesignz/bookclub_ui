@@ -35,7 +35,7 @@ const NextMeeting = () => {
           />
           <p>{displayTime || "TBA"}</p>
         </div>
-        <div className="book-card__meeting-line">
+        <div className="book-card__meeting-line col-span-full">
           <img
             src={locationIcon}
             alt="location icon"
