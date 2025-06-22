@@ -63,7 +63,7 @@ const MeetingForm = () => {
   }, [meeting]);
 
   return (
-    <section className="book-card gap-7" onSubmit={handleSubmit}>
+    <section className="book-card grid-cols-1 gap-7" onSubmit={handleSubmit}>
       {formOpen ? (
         <button
           className="btn btn-soft btn-error rounded-full justify-self-start"

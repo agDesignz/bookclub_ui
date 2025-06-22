@@ -46,7 +46,7 @@ const UserList = () => {
   return profilesLoading ? (
     <div>UserList</div>
   ) : (
-    <ul className="book-card p-0 border-none overflow-hidden gap-2">
+    <ul className="book-card grid-cols-1 p-0 border-none overflow-hidden gap-2">
       {profileData &&
         profileData.map((profile) => (
           <li
