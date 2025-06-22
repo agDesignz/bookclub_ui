@@ -5,7 +5,7 @@ const NextBook = () => {
   const { meeting, meetingLoading } = useContext(MeetingContext);
 
   return (
-    <section className="book-card book-card--book">
+    <section className="book-card book-card--dashboard">
       <h2 className="book-card__main-heading">Current Book</h2>
       {meetingLoading ? (
         <div className="book-card__meeting-line col-span-full justify-center">

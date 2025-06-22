@@ -5,16 +5,16 @@
     @apply cursor-pointer hover:bg-blue-700/50 active:bg-blue-700/50 focus:bg-blue-700/50;
   }
 
+  &--dashboard {
+    @apply max-sm:p-0;
+  }
+
   &__main-heading {
-    @apply col-span-full text-center font-mont;
+    @apply col-span-full text-center font-open tracking-wider text-lg text-orange-600;
   }
 
   &__book-img {
-    @apply rounded-lg md:rounded-md overflow-hidden w-16 sm:w-28 md:w-32 xl:w-40 relative cursor-pointer;
-  }
-
-  &__img-cover {
-    @apply absolute top-0 bottom-0 left-0 right-0 bg-orange text-blue-500 font-mont text-xl opacity-0 transition-opacity duration-200 hover:opacity-100 font-medium flex items-center justify-center;
+    @apply rounded-lg md:rounded-md overflow-hidden w-12 xs:w-14 sm:w-28 md:w-32 xl:w-40 relative cursor-pointer;
   }
 
   &__details {
@@ -38,7 +38,7 @@
   }
 
   &__meeting-line {
-    @apply flex items-center gap-3 lg:gap-6 text-2xl sm:text-3xl md:text-4xl font-open;
+    @apply flex items-center gap-3 lg:gap-6 text-lg xs:text-xl sm:text-2xl md:text-4xl font-open;
   }
 
   &__meeting-icon {
@@ -48,10 +48,6 @@
   &__controls {
     @apply flex gap-4 justify-center md:justify-end;
   }
-
-  /* & h4 {
-    @apply text-xl md:text-2xl font-normal;
-  } */
 
   &__text {
     @apply text-lg sm:text-xl md:text-2xl font-extralight;
