@@ -16,11 +16,15 @@ export const MeetingProvider = ({ children }) => {
   const fetchMeetingData = async () => {
     setMeetingLoading(true);
     const meetingData = await getMeeting();
+    console.log("meetingData:", meetingData);
     if (meetingData) {
-      // console.log("meetingData:", meetingData);
       setMeeting(meetingData);
-      setMeetingLoading(false);
+      // setMeetingLoading(false);
+    } else {
+      setMeeting(null);
+      // setMeetingLoading(false);
     }
+    setMeetingLoading(false);
   };
 
   const createMeeting = async (input) => {

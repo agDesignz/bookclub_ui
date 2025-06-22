@@ -19,30 +19,38 @@ const NextMeeting = () => {
     return (
       <section className="book-card min-[350px]:grid-cols-[1fr_1fr]">
         <h2 className="book-card__main-heading">Next Meeting</h2>
-        <div className="book-card__meeting-line">
-          <img
-            src={calendarIcon}
-            alt="calendar icon"
-            className="book-card__meeting-icon"
-          />
-          <p>{meeting?.date || "TBA"}</p>
-        </div>
-        <div className="book-card__meeting-line">
-          <img
-            src={clockIcon}
-            alt="time icon"
-            className="book-card__meeting-icon"
-          />
-          <p>{displayTime || "TBA"}</p>
-        </div>
-        <div className="book-card__meeting-line col-span-full">
-          <img
-            src={locationIcon}
-            alt="location icon"
-            className="book-card__meeting-icon"
-          />
-          <p>{meeting?.location || "TBA"}</p>
-        </div>
+        {meeting ? (
+          <>
+            <div className="book-card__meeting-line">
+              <img
+                src={calendarIcon}
+                alt="calendar icon"
+                className="book-card__meeting-icon"
+              />
+              <p>{meeting?.date || "TBA"}</p>
+            </div>
+            <div className="book-card__meeting-line">
+              <img
+                src={clockIcon}
+                alt="time icon"
+                className="book-card__meeting-icon"
+              />
+              <p>{displayTime || "TBA"}</p>
+            </div>
+            <div className="book-card__meeting-line col-span-full">
+              <img
+                src={locationIcon}
+                alt="location icon"
+                className="book-card__meeting-icon"
+              />
+              <p>{meeting?.location || "TBA"}</p>
+            </div>
+          </>
+        ) : (
+          <div className="book-card__meeting-line col-span-full justify-center">
+            <p>No Meeting Data</p>
+          </div>
+        )}
       </section>
     );
   }
