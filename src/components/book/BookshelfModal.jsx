@@ -18,19 +18,23 @@ const BookshelfModal = ({
       </button>
       <div className="book-card grid-cols-1 max-w-[800px] my-14">
         <div className="book-card__content-text">
-          {book?.description && (
-            <p className="book-card__text">{book.description}</p>
-          )}
           {book?.username && (
-            <h4 className="book-card__book-username my-2">
+            <h4 className="book-card__book-username">
               Selected by {book.username}
             </h4>
           )}
           {book?.suggestion && (
-            <p className="book-card__text italic">{book.suggestion}</p>
+            <p className="text-md sm:text-lg md:text-xl italic my-2">
+              - {book.suggestion}
+            </p>
+          )}
+          {book?.description && (
+            <p className="book-card__text book-card__text--sm">
+              {book.description}
+            </p>
           )}
         </div>
-        {book?.id && userData.id === book.user_id && (
+        {book?.id && userData?.id === book.user_id && (
           <div className="flex">
             <button
               className="btn btn-soft btn-error rounded-full"
