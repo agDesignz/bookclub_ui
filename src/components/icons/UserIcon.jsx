@@ -1,11 +1,8 @@
 const UserIcon = () => {
   return (
     <svg
-      className="size-9 fill-none group"
-      //   width="36px"
-      //   height="36px"
+      className="size-9 sm:size-12 lg:size-14 fill-none group"
       viewBox="0 0 24 24"
-      //   fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
       <rect width="24" height="24" fill="none" />

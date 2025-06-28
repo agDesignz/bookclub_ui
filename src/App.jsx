@@ -13,7 +13,7 @@ function App() {
     <div className="h-screen overflow-auto flex flex-col pb-16 px-2 md:px-4 lg:px-8 text-lemon-900">
       <Router>
         <Header />
-        <main className="container flex-1 flex flex-col justify-center">
+        <main className="container flex-1 flex flex-col pt-4 lg:justify-center">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/bookshelf" element={<Bookshelf />} />
