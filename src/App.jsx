@@ -7,6 +7,7 @@ import Bookshelf from "./pages/Bookshelf";
 import Search from "./pages/Search";
 import AdminRoute from "./routes/AdminRoute";
 import Admin from "./pages/admin/Admin";
+import Footer from "./components/layout/Footer";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
             </Route>
           </Routes>
         </main>
+        <Footer />
       </Router>
     </div>
   );
