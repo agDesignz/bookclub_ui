@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useAuth } from "../../context/auth/AuthContext";
+import { useNavigate } from "react-router";
 
 const Register = () => {
   const [signupData, setSignupData] = useState({});
   const [alertMsg, setAlertMsg] = useState("");
   const handleSignupChange = (e) => {
-    // updateFormMessage();
     setSignupData({ ...signupData, [e.target.name]: e.target.value });
   };
+  const navigate = useNavigate();
   const { registerUser } = useAuth();
 
   const submitSignup = async (e) => {
@@ -23,6 +24,8 @@ const Register = () => {
       const result = await registerUser(email, password, username);
       console.log(result);
     }
+    setSignupData({});
+    navigate("/");
   };
 
   return (
