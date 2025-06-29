@@ -25,6 +25,7 @@
     @apply grid content-start sm:gap-2;
   }
 
+  /* NextBook */
   &__book-title {
     @apply font-aleg tracking-wider font-medium text-2xl sm:text-3xl md:text-4xl;
   }
@@ -33,12 +34,13 @@
     @apply font-aleg tracking-wider italic text-xl sm:text-2xl lg:text-2xl;
   }
 
-  &__book-username {
-    @apply text-xl md:text-2xl;
+  /* NextMeeting */
+  &__meeting-line {
+    @apply flex items-center gap-3 lg:gap-6 text-lg sm:text-xl md:text-2xl font-open;
   }
 
-  &__meeting-line {
-    @apply flex items-center gap-3 lg:gap-6 text-lg xs:text-xl sm:text-2xl md:text-4xl font-open;
+  &__book-username {
+    @apply text-xl md:text-2xl;
   }
 
   &__meeting-icon {
