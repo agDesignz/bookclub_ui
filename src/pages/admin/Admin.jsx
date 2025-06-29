@@ -3,7 +3,7 @@ import UserList from "../../components/admin/UserList";
 
 const Admin = () => {
   return (
-    <section className="md:my-auto grid gap-8 lg:grid-cols-2">
+    <section className="md:my-auto grid gap-8 lg:grid-cols-2 items-start">
       <div className="grid gap-4 md-gap-8">
         <MeetingForm />
       </div>
