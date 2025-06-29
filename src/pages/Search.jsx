@@ -40,8 +40,8 @@ const Search = () => {
   }, [page]);
 
   return (
-    <section className="grid gap-8 md:gap-16 md:grid-cols-2 items-center">
-      <form className="grid gap-4 grid-cols-2">
+    <section className="grid gap-4 md:gap-8 xl:gap-16 md:grid-cols-[auto_1fr] items-start">
+      <form className="grid gap-4 grid-cols-2 md:w-96">
         <input
           type="text"
           placeholder="Search by Title"
@@ -72,7 +72,7 @@ const Search = () => {
         )}
         {/* </div> */}
       </form>
-      <div className="grid grid-cols-2 gap-3 basis-full">
+      <div className="grid xl:grid-cols-2 gap-3 basis-full">
         {loading ? (
           <span className="loading loading-bars loading-md m-auto"></span>
         ) : searchResults.books ? (
@@ -82,7 +82,9 @@ const Search = () => {
             page={page}
           />
         ) : (
-          <h2 className="text-3xl">Find your next read...</h2>
+          <h2 className="text-lg md:text-xl lg:text-2xl col-span-full">
+            Find your next read...
+          </h2>
         )}
       </div>
     </section>

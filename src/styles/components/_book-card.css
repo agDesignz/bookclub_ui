@@ -46,7 +46,7 @@
   }
 
   &__controls {
-    @apply flex gap-4 justify-center md:justify-end;
+    @apply flex gap-4 md:justify-end;
   }
 
   &__text {
