@@ -1,5 +1,5 @@
 .db-link {
-  @apply min-h-20 flex justify-center items-center font-mont text-xl sm:text-2xl md:text-3xl rounded-lg md:rounded-2xl hover:border-2 hover:border-lemon-900 flex-col gap-1 md:gap-2 p-4;
+  @apply min-h-20 flex justify-center items-center font-mont text-xl sm:text-2xl md:text-3xl rounded-lg md:rounded-2xl flex-col gap-1 md:gap-2 p-4 transition-opacity duration-200 hover:opacity-75;
 
   &--bookshelf {
     @apply bg-gradient-to-tr from-sinopia-400 to-orange-400;

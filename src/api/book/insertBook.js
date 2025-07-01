@@ -9,6 +9,7 @@ const insertBook = async (book, id) => {
       key: book.key,
       description: book.description,
       user_id: id,
+      suggestion: book.suggestion,
     },
   ]);
 
