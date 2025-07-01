@@ -13,6 +13,7 @@ const Search = () => {
   const handleSearch = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setPage(1);
     const searchData = await fetchBookData(title, author, 1);
     setSearchResults(searchData);
     setLoading(false);
