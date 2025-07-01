@@ -5,9 +5,6 @@ const BookCover = ({ coverData }) => {
   const [hasError, setHasError] = useState(false);
   const [imageSrc, setImageSrc] = useState(null);
 
-  //   const imageSrc = coverData?.cover
-  //     ? `https://covers.openlibrary.org/b/id/${coverData.cover}-M.jpg`
-  //     : null;
   const getImage = (url) => {
     if (url) {
       setImageSrc(`https://covers.openlibrary.org/b/id/${url}-M.jpg`);
@@ -21,6 +18,7 @@ const BookCover = ({ coverData }) => {
 
   useEffect(() => {
     // Reset loading/error when coverData changes
+    console.log("coverData:", coverData);
     getImage(coverData.cover);
   }, [coverData]);
 
