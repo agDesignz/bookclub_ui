@@ -16,7 +16,7 @@ export const MeetingProvider = ({ children }) => {
   const fetchMeetingData = async () => {
     setMeetingLoading(true);
     const meetingData = await getMeeting();
-    console.log("meetingData:", meetingData);
+    // console.log("meetingData:", meetingData);
     if (meetingData) {
       setMeeting(meetingData);
     } else {

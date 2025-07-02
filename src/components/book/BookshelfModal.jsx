@@ -3,11 +3,11 @@ import closeIcon from "../../assets/icons/close.svg";
 import BookSuggestion from "./BookSuggestion";
 
 const BookshelfModal = ({
-  modalData: book,
+  book,
   showModal,
   resetModal,
   userData,
-  setBooks,
+  setBook,
   handleBookDelete,
 }) => {
   const [adding, setAdding] = useState(false);
@@ -49,7 +49,7 @@ const BookshelfModal = ({
               <BookSuggestion
                 setAdding={setAdding}
                 book={book}
-                setBooks={setBooks}
+                setBook={setBook}
               />
             ) : (
               <div className="grid grid-cols-2 gap-4">

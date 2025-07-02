@@ -1,11 +1,13 @@
 import BookCover from "../book/BookCover";
 import closeIcon from "../../assets/icons/close.svg";
-import insertBook from "../../api/book/insertBook";
-import { useState } from "react";
+// import insertBook from "../../api/book/insertBook";
+import { useContext, useState } from "react";
+import BooksContext from "../../context/books/BooksContext";
 
 const SearchModal = ({ modalData, showModal, resetModal, userData }) => {
   const [adding, setAdding] = useState(false);
   const [suggestion, setSuggestion] = useState(null);
+  const { addBook } = useContext(BooksContext);
 
   const handleUpdateBookData = (e) => {
     setSuggestion(e.target.value);
@@ -13,10 +15,13 @@ const SearchModal = ({ modalData, showModal, resetModal, userData }) => {
 
   const handleAddBook = async () => {
     const bookData = { ...modalData, suggestion };
-    const result = await insertBook(bookData, userData.id);
-    if (result === "success") {
+    const result = await addBook(bookData, userData.id);
+    if (result) {
+      setAdding(false);
+      setSuggestion(null);
       resetModal();
     }
+    console.log("add result:", result);
     console.log("bookData:", bookData);
   };
 

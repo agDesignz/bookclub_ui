@@ -1,8 +1,10 @@
-import { useState } from "react";
-import updateBookSuggestion from "../../api/book/updateBookSuggestion";
+import { useContext, useState } from "react";
+// import updateBookSuggestion from "../../api/book/updateBookSuggestion";
+import BooksContext from "../../context/books/BooksContext";
 
-const BookSuggestion = ({ setAdding, book, setBooks, newBook = false }) => {
+const BookSuggestion = ({ setAdding, book, setBook, newBook = false }) => {
   const [suggestion, setSuggestion] = useState(null);
+  const { addSuggestion } = useContext(BooksContext);
 
   const handleCancel = () => {
     setSuggestion(null);
@@ -14,13 +16,24 @@ const BookSuggestion = ({ setAdding, book, setBooks, newBook = false }) => {
   };
 
   const handleUpdateBook = async () => {
-    console.log("updating");
-    const result = await updateBookSuggestion(suggestion, book.id);
-    if (result.length) {
-    } else {
-      console.log("something went wrong", result);
+    const result = await addSuggestion(suggestion, book.id);
+    console.log(result);
+    if (result) {
+      setBook(result);
+      setSuggestion(null);
+      setAdding(false);
     }
   };
+
+  //   const handleUpdateBook = async () => {
+  //     console.log("updating");
+
+  //     const result = await updateBookSuggestion(suggestion, book.id);
+  //     if (result.length) {
+  //     } else {
+  //       console.log("something went wrong", result);
+  //     }
+  //   };
 
   return (
     <div className="w-full grid grid-cols-2 gap-4">
