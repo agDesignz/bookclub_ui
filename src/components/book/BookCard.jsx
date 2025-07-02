@@ -1,4 +1,8 @@
-const BookCard = ({ book, isDeleting, setShowModal, setModalData }) => {
+import { useState } from "react";
+
+const BookCard = ({ book, setShowModal, setModalData }) => {
+  const [isDeleting, setIsDeleting] = useState(false);
+
   const handleSeeDetails = (book) => {
     setModalData(book);
     setShowModal(true);

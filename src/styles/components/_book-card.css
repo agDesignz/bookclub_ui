@@ -1,5 +1,5 @@
 .book-card {
-  @apply grid items-center gap-x-8 gap-y-2 grid-cols-[max-content_1fr] w-full p-3 md:p-5 sm:border border-lemon-700/50 sm:rounded-lg md:rounded-2xl;
+  @apply grid sm:items-center gap-x-3 sm:gap-x-4 md:gap-x-8 gap-y-2 grid-cols-[max-content_1fr] w-full p-3 md:p-5 sm:border border-lemon-700/50 sm:rounded-lg md:rounded-2xl;
 
   &--book-shelf {
     @apply cursor-pointer hover:bg-blue-700/50 active:bg-blue-700/50 focus:bg-blue-700/50;
@@ -27,20 +27,20 @@
 
   /* NextBook */
   &__book-title {
-    @apply font-aleg tracking-wider font-medium text-2xl sm:text-3xl md:text-4xl;
+    @apply font-aleg tracking-wider font-medium text-lg xs:text-2xl sm:text-3xl md:text-4xl;
   }
 
   &__book-author {
-    @apply font-aleg tracking-wider italic text-xl sm:text-2xl lg:text-2xl;
+    @apply font-aleg tracking-wider italic xs:text-xl sm:text-2xl lg:text-2xl;
   }
 
   /* NextMeeting */
   &__meeting-line {
-    @apply flex items-center gap-3 lg:gap-6 text-lg sm:text-xl md:text-2xl font-open;
+    @apply flex items-center gap-3 lg:gap-6 xs:text-lg sm:text-xl md:text-2xl font-open;
   }
 
   &__book-username {
-    @apply text-lg sm:text-xl text-orange-600;
+    @apply text-lg xs:text-lg sm:text-xl text-orange-600;
   }
 
   &__meeting-icon {
