@@ -40,7 +40,7 @@
   }
 
   &__book-username {
-    @apply text-xl md:text-2xl;
+    @apply text-lg sm:text-xl text-orange-600;
   }
 
   &__meeting-icon {

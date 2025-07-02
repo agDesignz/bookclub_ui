@@ -66,6 +66,7 @@ const Bookshelf = () => {
         resetModal={resetModal}
         userData={user}
         handleBookDelete={handleBookDelete}
+        setBooks={setBooks}
       />
     </section>
   );

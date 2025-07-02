@@ -20,6 +20,9 @@ const BookCard = ({ book, isDeleting, setShowModal, setModalData }) => {
       <div className="book-card__content-text">
         <h2 className="book-card__book-title">{book.title}</h2>
         <h3 className="book-card__book-author">{book.author}</h3>
+        <h4 className="book-card__book-username">
+          Selected by {book.username}
+        </h4>
       </div>
     </div>
   );

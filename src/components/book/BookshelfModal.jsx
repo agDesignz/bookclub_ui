@@ -1,12 +1,21 @@
+import { useState } from "react";
 import closeIcon from "../../assets/icons/close.svg";
+import BookSuggestion from "./BookSuggestion";
 
 const BookshelfModal = ({
   modalData: book,
   showModal,
   resetModal,
   userData,
+  setBooks,
   handleBookDelete,
 }) => {
+  const [adding, setAdding] = useState(false);
+
+  const addSuggestion = () => {
+    setAdding(true);
+  };
+
   return (
     <section
       className={`book-modal book-modal--bookshelf overflow-auto items-start ${
@@ -35,14 +44,27 @@ const BookshelfModal = ({
           )}
         </div>
         {book?.id && userData?.id === book.user_id && (
-          <div className="flex">
-            <button
-              className="btn btn-soft btn-error rounded-full"
-              onClick={() => handleBookDelete(book?.id)}
-            >
-              Delete
-            </button>
-          </div>
+          <>
+            {adding ? (
+              <BookSuggestion
+                setAdding={setAdding}
+                book={book}
+                setBooks={setBooks}
+              />
+            ) : (
+              <div className="grid grid-cols-2 gap-4">
+                <button className="form__button" onClick={addSuggestion}>
+                  Add suggestion
+                </button>
+                <button
+                  className="form__button btn-error rounded-full"
+                  onClick={() => handleBookDelete(book?.id)}
+                >
+                  Delete
+                </button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>
