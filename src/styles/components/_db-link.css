@@ -9,6 +9,10 @@
     @apply bg-gradient-to-tr from-dark_green-300 to-asparagus-400;
   }
 
+  &--archive {
+    @apply bg-gradient-to-tr from-yellow-300 to-yellow-400 text-blue-400;
+  }
+
   & svg {
     @apply size-7 sm:size-8 md:size-10;
   }

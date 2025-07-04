@@ -3,6 +3,7 @@ import NextBook from "../components/dashboard/NextBook";
 import NextMeeting from "../components/dashboard/NextMeeting";
 import SearchIcon from "../components/icons/SearchIcon";
 import BookshelfIcon from "../components/icons/BookshelfIcon";
+import ArchiveIcon from "../components/icons/ArchiveIcon";
 
 const Home = () => {
   return (
@@ -19,6 +20,10 @@ const Home = () => {
         <Link className="db-link db-link--bookshelf" to="/bookshelf">
           <BookshelfIcon fill="#fefcf5" />
           Bookshelf
+        </Link>
+        <Link className="db-link db-link--archive" to="/archive">
+          <ArchiveIcon />
+          Archive
         </Link>
       </div>
     </section>

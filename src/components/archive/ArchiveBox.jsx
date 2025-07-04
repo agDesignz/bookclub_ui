@@ -4,11 +4,10 @@ const ArchiveBox = ({ meeting }) => {
   return (
     <div className="book-card ">
       <h2 className="col-span-full">{meeting.date}</h2>
-      <BookCover
-        coverData={{
-          cover: meeting.book_id.cover,
-          title: meeting.book_id.title,
-        }}
+      <img
+        className="book-card__book-img max-w-24"
+        src={`https://covers.openlibrary.org/b/id/${meeting.book_id.cover}-M.jpg`}
+        alt={`cover of ${meeting.book_id.title}`}
       />
       <div className="book-card__content-text">
         <h2 className="book-card__book-title">{meeting.book_id.title}</h2>

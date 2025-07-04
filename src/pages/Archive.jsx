@@ -14,9 +14,10 @@ const Archive = () => {
   }
   return (
     <section className="grid lg:grid-cols-2 gap-5">
-      {allMeetings.map((meeting) => (
-        <ArchiveBox key={meeting.id} meeting={meeting} />
-      ))}
+      {allMeetings &&
+        allMeetings.map((meeting) => (
+          <ArchiveBox key={meeting.id} meeting={meeting} />
+        ))}
     </section>
   );
 };
