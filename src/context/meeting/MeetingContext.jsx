@@ -1,10 +1,11 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import getMeeting from "../../api/meeting/getMeeting";
 import getAllMeetings from "../../api/meeting/getAllMeetings";
 import insertMeeting from "../../api/meeting/insertMeeting";
 import { useAuth } from "../auth/AuthContext";
 import updateMeeting from "../../api/meeting/updateMeeting";
 import deleteMeeting from "../../api/meeting/deleteMeeting";
+import BooksContext from "../books/BooksContext";
 
 const MeetingContext = createContext();
 
@@ -14,6 +15,7 @@ export const MeetingProvider = ({ children }) => {
   const [meetingLoading, setMeetingLoading] = useState(false);
   const [allMeetings, setAllMeetings] = useState(null);
   const [allLoading, setAllLoading] = useState(false);
+  const { archiveBook } = useContext(BooksContext);
 
   // Consolidate the following into a reducer ???
   const fetchNextMeetingData = async () => {
@@ -44,6 +46,7 @@ export const MeetingProvider = ({ children }) => {
     const newMeeting = await insertMeeting(input);
     if (newMeeting) {
       // console.log("newMeeting:", newMeeting);
+      input.book_id && archiveBook(input.book_id, true);
       setNextMeeting(newMeeting[0]);
       return newMeeting;
     }

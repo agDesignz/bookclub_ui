@@ -3,6 +3,8 @@ import getAllBooks from "../../api/book/getAllBooks";
 import deleteBook from "../../api/book/deleteBook";
 import updateBookSuggestion from "../../api/book/updateBookSuggestion";
 import insertBook from "../../api/book/insertBook";
+import updateBookStatus from "../../api/book/updateBookStatus";
+import getBookshelfBooks from "../../api/book/getBookshelfBooks";
 
 const BooksContext = createContext();
 
@@ -10,7 +12,7 @@ export const BooksProvider = ({ children }) => {
   const [books, setBooks] = useState(null);
 
   const fetchBooks = async () => {
-    const bookData = await getAllBooks();
+    const bookData = await getBookshelfBooks();
     if (bookData) {
       setBooks(bookData);
     } else {
@@ -56,6 +58,16 @@ export const BooksProvider = ({ children }) => {
     }
   };
 
+  const archiveBook = async (book_id, read) => {
+    const result = await updateBookStatus(book_id, read);
+    if (result) {
+      read === true && setBooks(books.filter((book) => book.id !== id));
+      read === false && setBooks({ ...books, result });
+    } else {
+      console.log("Ruh-roh!", result);
+    }
+  };
+
   useEffect(() => {
     fetchBooks();
   }, []);
@@ -66,6 +78,7 @@ export const BooksProvider = ({ children }) => {
         books,
         setBooks,
         addSuggestion,
+        archiveBook,
         removeBook,
         insertBook,
         addBook,
