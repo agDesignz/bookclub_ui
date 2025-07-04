@@ -4,7 +4,7 @@ const getMeeting = async () => {
   const { data, error } = await supabase
     .from("meeting")
     .select(`*, book_id("*")`)
-    .order("id", { ascending: false })
+    .order("date", { ascending: false })
     .limit(1);
   if (error) {
     console.log("getMeeting fetch error: ", error);

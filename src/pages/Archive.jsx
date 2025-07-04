@@ -1,13 +1,23 @@
-import { useEffect } from "react";
-import getAllMeetings from "../api/meeting/getAllMeetings";
+import { useContext, useEffect } from "react";
+import MeetingContext from "../context/meeting/MeetingContext";
+import ArchiveBox from "../components/archive/ArchiveBox";
 
 const Archive = () => {
+  const { allMeetings, allLoading, fetchMeetingsData } =
+    useContext(MeetingContext);
+
   useEffect(() => {
-    const fetchMeetings = async () => {
-      await getAllMeetings();
-    };
-    fetchMeetings();
+    fetchMeetingsData();
   }, []);
-  return <div>Archive</div>;
+  if (allLoading) {
+    return <span className="loading loading-bars loading-xl"></span>;
+  }
+  return (
+    <section className="grid lg:grid-cols-2 gap-5">
+      {allMeetings.map((meeting) => (
+        <ArchiveBox key={meeting.id} meeting={meeting} />
+      ))}
+    </section>
+  );
 };
 export default Archive;

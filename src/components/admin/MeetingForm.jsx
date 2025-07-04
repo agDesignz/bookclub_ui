@@ -4,7 +4,7 @@ import MeetingContext from "../../context/meeting/MeetingContext";
 import BookSelect from "./BookSelect";
 
 const MeetingForm = () => {
-  const { meeting, createMeeting, changeMeeting, deleteCurrentMeeting } =
+  const { nextMeeting, createMeeting, changeMeeting, deleteCurrentMeeting } =
     useContext(MeetingContext);
   const [formOpen, setFormOpen] = useState(false);
   const [formAction, setFormAction] = useState("Edit");
@@ -55,12 +55,12 @@ const MeetingForm = () => {
 
   const cancelChange = () => {
     setFormOpen(false);
-    setMeetingData(meeting);
+    setMeetingData(nextMeeting);
   };
 
   useEffect(() => {
-    setMeetingData(meeting);
-  }, [meeting]);
+    setMeetingData(nextMeeting);
+  }, [nextMeeting]);
 
   return (
     <section className="book-card grid-cols-1 gap-7" onSubmit={handleSubmit}>

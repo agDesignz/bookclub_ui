@@ -6,12 +6,12 @@ import clockIcon from "../../assets/icons/clock.svg";
 import formatTime from "../../utils/formatTime";
 
 const NextMeeting = () => {
-  const { meeting, meetingLoading } = useContext(MeetingContext);
+  const { nextMeeting, meetingLoading } = useContext(MeetingContext);
   const [displayTime, setDisplayTime] = useState(null);
 
   useEffect(() => {
-    if (meeting?.time) setDisplayTime(formatTime(meeting?.time));
-  }, [meeting]);
+    if (nextMeeting?.time) setDisplayTime(formatTime(nextMeeting?.time));
+  }, [nextMeeting]);
 
   if (meetingLoading) {
     return <span className="loading loading-bars loading-xl"></span>;
@@ -19,7 +19,7 @@ const NextMeeting = () => {
     return (
       <section className="book-card book-card--dashboard min-[350px]:grid-cols-[1fr_1fr]">
         <h2 className="book-card__main-heading">Next Meeting</h2>
-        {meeting ? (
+        {nextMeeting ? (
           <>
             <div className="book-card__meeting-line">
               <img
@@ -27,7 +27,7 @@ const NextMeeting = () => {
                 alt="calendar icon"
                 className="book-card__meeting-icon"
               />
-              <p>{meeting?.date || "TBA"}</p>
+              <p>{nextMeeting?.date || "TBA"}</p>
             </div>
             <div className="book-card__meeting-line">
               <img
@@ -43,7 +43,7 @@ const NextMeeting = () => {
                 alt="location icon"
                 className="book-card__meeting-icon"
               />
-              <p>{meeting?.location || "TBA"}</p>
+              <p>{nextMeeting?.location || "TBA"}</p>
             </div>
           </>
         ) : (

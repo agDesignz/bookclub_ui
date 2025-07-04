@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import getMeeting from "../../api/meeting/getMeeting";
+import getAllMeetings from "../../api/meeting/getAllMeetings";
 import insertMeeting from "../../api/meeting/insertMeeting";
 import { useAuth } from "../auth/AuthContext";
 import updateMeeting from "../../api/meeting/updateMeeting";
@@ -9,27 +10,41 @@ const MeetingContext = createContext();
 
 export const MeetingProvider = ({ children }) => {
   const { user } = useAuth();
-  const [meeting, setMeeting] = useState(null);
+  const [nextMeeting, setNextMeeting] = useState(null);
   const [meetingLoading, setMeetingLoading] = useState(false);
+  const [allMeetings, setAllMeetings] = useState(null);
+  const [allLoading, setAllLoading] = useState(false);
 
   // Consolidate the following into a reducer ???
-  const fetchMeetingData = async () => {
+  const fetchNextMeetingData = async () => {
     setMeetingLoading(true);
     const meetingData = await getMeeting();
     // console.log("meetingData:", meetingData);
     if (meetingData) {
-      setMeeting(meetingData);
+      setNextMeeting(meetingData);
     } else {
-      setMeeting(null);
+      setNextMeeting(null);
     }
     setMeetingLoading(false);
+  };
+
+  const fetchMeetingsData = async () => {
+    setAllLoading(true);
+    const allMeetingsData = await getAllMeetings();
+    console.log("allMeetingsData:", allMeetingsData);
+    if (allMeetingsData) {
+      setAllMeetings(allMeetingsData);
+    } else {
+      setAllMeetings(null);
+    }
+    setAllLoading(false);
   };
 
   const createMeeting = async (input) => {
     const newMeeting = await insertMeeting(input);
     if (newMeeting) {
       // console.log("newMeeting:", newMeeting);
-      setMeeting(newMeeting[0]);
+      setNextMeeting(newMeeting[0]);
       return newMeeting;
     }
   };
@@ -37,7 +52,7 @@ export const MeetingProvider = ({ children }) => {
   const changeMeeting = async (input) => {
     const newMeeting = await updateMeeting(input);
     if (newMeeting) {
-      setMeeting(newMeeting[0]);
+      setNextMeeting(newMeeting[0]);
       return newMeeting;
     }
   };
@@ -45,25 +60,27 @@ export const MeetingProvider = ({ children }) => {
   const deleteCurrentMeeting = async (id) => {
     const result = await deleteMeeting(id);
     if (result === "success") {
-      fetchMeetingData();
+      fetchNextMeetingData();
     }
   };
 
   // End reducer functions //
 
   useEffect(() => {
-    fetchMeetingData();
+    fetchNextMeetingData();
   }, [user]);
 
   return (
     <MeetingContext.Provider
       value={{
-        meeting,
-        fetchMeetingData,
+        nextMeeting,
+        allMeetings,
+        allLoading,
         createMeeting,
         changeMeeting,
         deleteCurrentMeeting,
         meetingLoading,
+        fetchMeetingsData,
       }}
     >
       {children}
