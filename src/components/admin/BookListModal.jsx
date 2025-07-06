@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import closeIcon from "../../assets/icons/close.svg";
-import getAllBooks from "../../api/book/getAllBooks";
+import getBookshelfBooks from "../../api/book/getBookshelfBooks";
 
 const BookListModal = ({ changeModalState, addBook }) => {
   const [books, setBooks] = useState(null);
@@ -11,7 +11,7 @@ const BookListModal = ({ changeModalState, addBook }) => {
   };
 
   const fetchBooks = async () => {
-    const bookData = await getAllBooks();
+    const bookData = await getBookshelfBooks();
     if (bookData) {
       setBooks(bookData);
     } else {
