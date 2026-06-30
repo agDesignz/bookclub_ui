@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import MeetingContext from "../../context/meeting/MeetingContext";
+import BookCover from "../book/BookCover";
 
 const NextBook = () => {
   const { nextMeeting, meetingLoading } = useContext(MeetingContext);
@@ -13,11 +14,17 @@ const NextBook = () => {
         </div>
       ) : nextMeeting ? (
         <>
-          <img
-            className="book-card__book-img"
-            src={`https://covers.openlibrary.org/b/id/${nextMeeting?.book_id?.cover}-M.jpg`}
-            alt={`cover of ${nextMeeting?.book_id?.title}`}
-          />
+          <figure className="book-card__book-img">
+            <BookCover
+              coverData={{
+                imageUrl: nextMeeting
+                  ? `https://covers.openlibrary.org/b/id/${nextMeeting.book_id?.cover}-M.jpg`
+                  : null,
+                title: nextMeeting?.book_id?.title,
+              }}
+            />
+          </figure>
+
           <div className="book-card__content-text">
             <h3 className="book-card__book-title">
               {nextMeeting?.book_id?.title || "TBA"}

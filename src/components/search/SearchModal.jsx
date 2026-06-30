@@ -1,5 +1,5 @@
 import BookCover from "../book/BookCover";
-import closeIcon from "../../assets/icons/close.svg";
+import CloseIcon from "../icons/CloseIcon";
 // import insertBook from "../../api/book/insertBook";
 import { useContext, useState } from "react";
 import BooksContext from "../../context/books/BooksContext";
@@ -44,20 +44,22 @@ const SearchModal = ({ modalData, showModal, resetModal, userData }) => {
     >
       <div className={`book-modal__card ${adding && "md:max-w-[600px]"}`}>
         <button className="book-modal__close-btn" onClick={handleClose}>
-          <img src={closeIcon} alt="close" className="w-full h-full block" />
+          <CloseIcon aria-description="Close this pop-up window and return to search results" />
         </button>
         {!adding ? (
           <>
             <div className="book-modal__main-info">
               <div className="max-w-20 flex justify-center items-center">
-                <BookCover
-                  coverData={{
-                    imageUrl: modalData
-                      ? `https://covers.openlibrary.org/b/id/${modalData.cover}-M.jpg`
-                      : null,
-                    title: modalData?.title,
-                  }}
-                />
+                <div className="relative w-20 h-32 rounded-sm overflow-hidden">
+                  <BookCover
+                    coverData={{
+                      imageUrl: modalData
+                        ? `https://covers.openlibrary.org/b/id/${modalData.cover}-M.jpg`
+                        : null,
+                      title: modalData?.title,
+                    }}
+                  />
+                </div>
               </div>
               <div className="book-card__content-text">
                 <h3 className="book-card__book-title">{modalData?.title}</h3>

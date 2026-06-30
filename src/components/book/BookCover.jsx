@@ -11,7 +11,7 @@ const BookCover = ({ coverData }) => {
   };
 
   return (
-    <div className="relative w-20 h-32 object-cover">
+    <>
       {loading && (
         <span className="absolute inset-0 flex items-center justify-center">
           <span className="loading loading-bars loading-xl"></span>
@@ -25,7 +25,7 @@ const BookCover = ({ coverData }) => {
       ) : (
         <img
           ref={imgRef}
-          className={`w-full ${loading ? "invisible" : "visible"}`}
+          className={`w-full h-full object-cover ${loading ? "invisible" : "visible"}`}
           src={coverData.imageUrl}
           onLoad={handleImgLoad}
           onError={() => {
@@ -35,7 +35,7 @@ const BookCover = ({ coverData }) => {
           alt={`cover of ${coverData?.title || "book"}`}
         />
       )}
-    </div>
+    </>
   );
 };
 
