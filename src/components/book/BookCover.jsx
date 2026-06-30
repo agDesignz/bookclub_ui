@@ -1,12 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const BookCover = ({ coverData }) => {
   const [loading, setLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
+  const imgRef = useRef(null);
 
-  if (!coverData.cover) {
-    return <p>Image not available</p>;
-  }
+  const handleImgLoad = () => {
+    imgRef?.current.naturalWidth <= 5 && setHasError(true);
+    setLoading(false);
+  };
 
   return (
     <div className="relative w-20 h-32 object-cover">
@@ -22,9 +24,10 @@ const BookCover = ({ coverData }) => {
         </div>
       ) : (
         <img
+          ref={imgRef}
           className={`w-full ${loading ? "invisible" : "visible"}`}
-          src={coverData.cover}
-          onLoad={() => setLoading(false)}
+          src={coverData.imageUrl}
+          onLoad={handleImgLoad}
           onError={() => {
             setLoading(false);
             setHasError(true);

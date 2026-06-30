@@ -52,8 +52,8 @@ const SearchModal = ({ modalData, showModal, resetModal, userData }) => {
               <div className="max-w-20 flex justify-center items-center">
                 <BookCover
                   coverData={{
-                    cover: modalData
-                      ? `https://covers.openlibrary.org/b/id/${modalData.cover}-dM.jpg`
+                    imageUrl: modalData
+                      ? `https://covers.openlibrary.org/b/id/${modalData.cover}-M.jpg`
                       : null,
                     title: modalData?.title,
                   }}
