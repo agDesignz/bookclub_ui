@@ -1,5 +1,5 @@
 import { useState } from "react";
-import closeIcon from "../../assets/icons/close.svg";
+import CloseIcon from "../icons/CloseIcon";
 import BookSuggestion from "./BookSuggestion";
 
 const BookshelfModal = ({
@@ -23,7 +23,7 @@ const BookshelfModal = ({
       }`}
     >
       <button className="book-modal__close-btn" onClick={resetModal}>
-        <img src={closeIcon} alt="close" className="w-full h-full block" />
+        <CloseIcon aria-description="Close this pop-up window and return to bookshelf" />
       </button>
       <div className="book-card grid-cols-1 max-w-[800px] my-14">
         <div className="book-card__content-text">
