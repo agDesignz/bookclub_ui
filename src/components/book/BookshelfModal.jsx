@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import CloseIcon from "../icons/CloseIcon";
 import BookSuggestion from "./BookSuggestion";
 
@@ -16,11 +16,29 @@ const BookshelfModal = ({
     setAdding(true);
   };
 
+  const handleModalClick = (e) => {
+    e.target === e.currentTarget && resetModal();
+  };
+
+  const handleKeyDown = (e) => {
+    e.key === "Escape" && resetModal();
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
   return (
     <section
       className={`book-modal book-modal--bookshelf overflow-auto items-start ${
         showModal ? "book-modal--show" : "book-modal--hide"
       }`}
+      onClick={handleModalClick}
+      onKeyDown={handleKeyDown}
     >
       <button
         className="book-modal__close-btn book-modal__close-btn--blue"
