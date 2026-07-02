@@ -22,7 +22,10 @@ const BookshelfModal = ({
         showModal ? "book-modal--show" : "book-modal--hide"
       }`}
     >
-      <button className="book-modal__close-btn" onClick={resetModal}>
+      <button
+        className="book-modal__close-btn book-modal__close-btn--blue"
+        onClick={resetModal}
+      >
         <CloseIcon aria-description="Close this pop-up window and return to bookshelf" />
       </button>
       <div className="book-card grid-cols-1 max-w-[800px] my-14">

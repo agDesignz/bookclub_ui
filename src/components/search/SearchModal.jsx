@@ -43,7 +43,10 @@ const SearchModal = ({ modalData, showModal, resetModal, userData }) => {
       }`}
     >
       <div className={`book-modal__card ${adding && "md:max-w-[600px]"}`}>
-        <button className="book-modal__close-btn" onClick={handleClose}>
+        <button
+          className="book-modal__close-btn book-modal__close-btn--green"
+          onClick={handleClose}
+        >
           <CloseIcon aria-description="Close this pop-up window and return to search results" />
         </button>
         {!adding ? (

@@ -14,13 +14,14 @@
 
     &:hover {
       @apply bg-lemon-800;
-      & svg {
-        @apply fill-asparagus-400;
-      }
     }
-    /* &:hover svg {
-      opacity: 0;
-    } */
+
+    &--green:hover svg {
+      @apply fill-asparagus-400;
+    }
+    &--blue:hover svg {
+      @apply fill-blue-300;
+    }
   }
 
   &__main-info {
