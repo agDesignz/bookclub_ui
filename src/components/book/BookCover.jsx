@@ -10,6 +10,16 @@ const BookCover = ({ coverData }) => {
     setLoading(false);
   };
 
+  useEffect(() => {
+    console.log("BookCover Mounted");
+
+    return () => {
+      console.log("BookCover UnMounted");
+      setHasError(false);
+      setLoading(true);
+    };
+  }, [coverData]);
+
   return (
     <>
       {loading && (
