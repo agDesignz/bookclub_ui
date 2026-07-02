@@ -16,11 +16,6 @@ const BookCard = ({ book, setShowModal, setModalData }) => {
       }`}
       onClick={() => handleSeeDetails(book)}
     >
-      {/* <img
-        className="book-card__book-img"
-        src={`https://covers.openlibrary.org/b/id/${book.cover}-M.jpg`}
-        alt={`cover of ${book.title}`}
-      /> */}
       <figure className="book-card__book-img">
         <BookCover
           coverData={{

@@ -1,6 +1,5 @@
 import BookCover from "../book/BookCover";
 import CloseIcon from "../icons/CloseIcon";
-// import insertBook from "../../api/book/insertBook";
 import { useContext, useState } from "react";
 import BooksContext from "../../context/books/BooksContext";
 

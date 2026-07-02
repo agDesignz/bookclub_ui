@@ -3,7 +3,6 @@ import SearchModal from "./SearchModal";
 import { useAuth } from "../../context/auth/AuthContext";
 
 import fetchBookDescription from "../../api/open-library/fetchBookDescription";
-// import BookInputManual from "./BookInputManual";
 
 const SearchResults = ({ searchResults, handlePageChange, page }) => {
   const [modalData, setModalData] = useState(null);
@@ -27,7 +26,6 @@ const SearchResults = ({ searchResults, handlePageChange, page }) => {
       key,
     });
     setShowModal(true);
-    // document.getElementById("book_modal").showModal();
   };
 
   return (
@@ -44,7 +42,7 @@ const SearchResults = ({ searchResults, handlePageChange, page }) => {
                   book.title,
                   book.author_name,
                   book.cover_i,
-                  book.key
+                  book.key,
                 )
               }
             >
