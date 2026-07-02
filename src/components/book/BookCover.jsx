@@ -10,27 +10,33 @@ const BookCover = ({ coverData }) => {
     setLoading(false);
   };
 
-  useEffect(() => {
-    console.log("BookCover Mounted");
+  // useEffect(() => {
+  //   console.log("BookCover Mounted");
 
-    return () => {
-      console.log("BookCover UnMounted");
-      setHasError(false);
-      setLoading(true);
-    };
-  }, [coverData]);
+  //   return () => {
+  //     console.log("BookCover UnMounted");
+  //     setHasError(false);
+  //     setLoading(true);
+  //   };
+  // }, [coverData]);
 
   return (
     <>
       {loading && (
-        <span className="absolute inset-0 flex items-center justify-center">
+        <span className="inset-0 flex items-center justify-center">
           <span className="loading loading-bars loading-xl"></span>
         </span>
       )}
 
       {hasError ? (
-        <div className="absolute inset-0 w-full h-full rounded bg-lemon-300 flex items-center justify-center">
-          <p className="text-center text-blue-400">Image not available</p>
+        <div className="inset-0 w-full h-full aspect-[3/5] rounded bg-lemon-300 flex items-center justify-center">
+          <p className="text-center text-blue-400">
+            Image
+            <br />
+            not
+            <br />
+            available
+          </p>
         </div>
       ) : (
         <img

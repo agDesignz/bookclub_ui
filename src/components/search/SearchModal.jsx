@@ -36,7 +36,7 @@ const SearchModal = ({ modalData, showModal, resetModal, userData }) => {
     resetModal();
   };
 
-  return (
+  return !showModal ? null : (
     <section
       className={`book-modal book-modal--search ${
         showModal ? "book-modal--show" : "book-modal--hide"

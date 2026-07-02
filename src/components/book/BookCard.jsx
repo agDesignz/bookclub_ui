@@ -1,4 +1,5 @@
 import { useState } from "react";
+import BookCover from "./BookCover";
 
 const BookCard = ({ book, setShowModal, setModalData }) => {
   const [isDeleting, setIsDeleting] = useState(false);
@@ -15,11 +16,21 @@ const BookCard = ({ book, setShowModal, setModalData }) => {
       }`}
       onClick={() => handleSeeDetails(book)}
     >
-      <img
+      {/* <img
         className="book-card__book-img"
         src={`https://covers.openlibrary.org/b/id/${book.cover}-M.jpg`}
         alt={`cover of ${book.title}`}
-      />
+      /> */}
+      <figure className="book-card__book-img">
+        <BookCover
+          coverData={{
+            imageUrl: book
+              ? `https://covers.openlibrary.org/b/id/${book.cover}-M.jpg`
+              : null,
+            title: book?.title,
+          }}
+        />
+      </figure>
 
       <div className="book-card__content-text">
         <h2 className="book-card__book-title">{book.title}</h2>
